@@ -1,10 +1,9 @@
 /*--------------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
+	*** Copyright (c) 2012-2024 by DrVrej, All rights reserved. ***
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 --------------------------------------------------*/
 AddCSLuaFile()
-if (!file.Exists("autorun/vj_base_autorun.lua","LUA")) then return end
 
 ENT.Type 			= "anim"
 ENT.Base 			= "obj_vj_projectile_base"
@@ -54,31 +53,30 @@ function ENT:CustomOnInitialize()
 	ParticleEffectAttach("smoke_burning_engine_01", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	ParticleEffectAttach("fire_jet_01_flame", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	
-	//self:Ignite( 120, 40 )
-	local spriteGlow = ents.Create( "env_sprite" )
-	spriteGlow:SetKeyValue( "rendercolor","255 128 0" )
-	spriteGlow:SetKeyValue( "GlowProxySize","2.0" )
-	spriteGlow:SetKeyValue( "HDRColorScale","1.0" )
-	spriteGlow:SetKeyValue( "renderfx","14" )
-	spriteGlow:SetKeyValue( "rendermode","3" )
-	spriteGlow:SetKeyValue( "renderamt","255" )
-	spriteGlow:SetKeyValue( "disablereceiveshadows","0" )
-	spriteGlow:SetKeyValue( "mindxlevel","0" )
-	spriteGlow:SetKeyValue( "maxdxlevel","0" )
-	spriteGlow:SetKeyValue( "framerate","10.0" )
-	spriteGlow:SetKeyValue( "model","sprites/blueflare1.spr" )
-	spriteGlow:SetKeyValue( "spawnflags","0" )
-	spriteGlow:SetKeyValue( "scale","0.75" )
-	spriteGlow:SetPos( self:GetPos() )
+	local spriteGlow = ents.Create("env_sprite")
+	spriteGlow:SetKeyValue("rendercolor","255 128 0")
+	spriteGlow:SetKeyValue("GlowProxySize","2.0")
+	spriteGlow:SetKeyValue("HDRColorScale","1.0")
+	spriteGlow:SetKeyValue("renderfx","14")
+	spriteGlow:SetKeyValue("rendermode","3")
+	spriteGlow:SetKeyValue("renderamt","255")
+	spriteGlow:SetKeyValue("disablereceiveshadows","0")
+	spriteGlow:SetKeyValue("mindxlevel","0")
+	spriteGlow:SetKeyValue("maxdxlevel","0")
+	spriteGlow:SetKeyValue("framerate","10.0")
+	spriteGlow:SetKeyValue("model","sprites/blueflare1.spr")
+	spriteGlow:SetKeyValue("spawnflags","0")
+	spriteGlow:SetKeyValue("scale","0.75")
+	spriteGlow:SetPos(self:GetPos())
 	spriteGlow:Spawn()
-	spriteGlow:SetParent( self )
+	spriteGlow:SetParent(self)
 	self:DeleteOnRemove(spriteGlow)
 
 	local spriteLight = ents.Create("light_dynamic")
 	spriteLight:SetKeyValue("brightness", "1")
 	spriteLight:SetKeyValue("distance", "200")
 	spriteLight:SetLocalPos(self:GetPos())
-	spriteLight:SetLocalAngles( self:GetAngles() )
+	spriteLight:SetLocalAngles(self:GetAngles())
 	spriteLight:Fire("Color", "255 150 0")
 	spriteLight:SetParent(self)
 	spriteLight:Spawn()
@@ -88,19 +86,19 @@ function ENT:CustomOnInitialize()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:DeathEffects(data,phys)
-	local effectdata = EffectData()
-	effectdata:SetOrigin(data.HitPos)
-	//effectdata:SetScale( 10 )
-	util.Effect( "HelicopterMegaBomb", effectdata )
-	util.Effect( "ThumperDust", effectdata )
-	util.Effect( "Explosion", effectdata )
-	util.Effect( "VJ_Small_Explosion1", effectdata )
+	local effectData = EffectData()
+	effectData:SetOrigin(data.HitPos)
+	//effectData:SetScale(10)
+	util.Effect("HelicopterMegaBomb", effectData)
+	util.Effect("ThumperDust", effectData)
+	util.Effect("Explosion", effectData)
+	util.Effect("VJ_Small_Explosion1", effectData)
 
 	local expLight = ents.Create("light_dynamic")
 	expLight:SetKeyValue("brightness", "5")
 	expLight:SetKeyValue("distance", "300")
 	expLight:SetLocalPos(data.HitPos)
-	expLight:SetLocalAngles( self:GetAngles() )
+	expLight:SetLocalAngles(self:GetAngles())
 	expLight:Fire("Color", "255 150 0")
 	expLight:SetParent(self)
 	expLight:Spawn()
@@ -108,8 +106,3 @@ function ENT:DeathEffects(data,phys)
 	expLight:Fire("TurnOn", "", 0)
 	self:DeleteOnRemove(expLight)
 end
-/*-----------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
-	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
-	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
------------------------------------------------*/

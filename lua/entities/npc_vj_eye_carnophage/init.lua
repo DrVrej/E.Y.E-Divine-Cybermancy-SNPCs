@@ -1,18 +1,22 @@
 AddCSLuaFile("shared.lua")
-include('shared.lua')
+include("shared.lua")
 /*-----------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
+	*** Copyright (c) 2012-2024 by DrVrej, All rights reserved. ***
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
 ENT.Model = {"models/vj_eye/carnophage.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
-ENT.StartHealth = GetConVarNumber("vj_eye_carnophage_h")
+ENT.StartHealth = 200
 ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
+ENT.AnimTbl_MeleeAttack = {"vjseq_melee"}
+ENT.TimeUntilMeleeAttackDamage = 0.32
+ENT.MeleeAttackExtraTimers = {0.6}
+ENT.MeleeAttackDamage = 18
 ENT.MeleeAttackDistance = 40 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
@@ -24,6 +28,18 @@ ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
+	-- ====== Flinching Code ====== --
+ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
+ENT.AnimTbl_Flinch = {ACT_FLINCH_PHYSICS} -- If it uses normal based animation, use this
+ENT.HitGroupFlinching_Values = {
+	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
+	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
+	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},
+	{HitGroup = {HITGROUP_LEFTARM}, Animation = {"vjges_gesture_flinch_leftArm"}},
+	{HitGroup = {HITGROUP_RIGHTARM}, Animation = {"vjges_gesture_flinch_rightArm"}},
+	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
+	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
+}
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
 ENT.SoundTbl_FootStep = {"carnoeye/carnofoot1.mp3","carnoeye/carnofoot2.mp3"}
@@ -33,37 +49,37 @@ ENT.SoundTbl_BeforeMeleeAttack = {"carnoeye/leap1.wav","carnoeye/leap2.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_eyegeneral/swipe01.wav","vj_eyegeneral/swipe02.wav","vj_eyegeneral/swipe03.wav"}
 ENT.SoundTbl_Pain = {"carnoeye/pain1.wav","carnoeye/pain2.wav"}
 ENT.SoundTbl_Death = {"carnoeye/scream.wav","carnoeye/die2.wav"}
+
+local sdAlertRegular = {"carnoeye/alert1.wav", "carnoeye/alert3.wav"}
+local sdAlertAngry = {"carnoeye/gurgle_loop1.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
-	self:SetCollisionBounds(Vector(30, 30, 80), Vector(-30, -30, 0))
+	self:SetCollisionBounds(Vector(22, 22, 80), Vector(-22, -22, 0))
 	self:SetSkin(math.random(0, 3))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnAlert()
 	if self.VJ_IsBeingControlled == true then return end
 	if math.random(1, 2) == 1 then
-		self.SoundTbl_Alert = {"carnoeye/gurgle_loop1.wav"}
+		self.SoundTbl_Alert = sdAlertAngry
 		self:VJ_ACT_PLAYACTIVITY(ACT_ARM, true, false, true)
 	else
-		self.SoundTbl_Alert = {"carnoeye/alert1.wav","carnoeye/alert3.wav"}
+		self.SoundTbl_Alert = sdAlertRegular
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
+/*
+-- Why not use the other 2 attacks? Because this 1 attack is extremely dangerous & fast, while the others are too slow compared to it
 function ENT:MultipleMeleeAttacks()
-	if math.random(2, 2) == 1 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee2","vjseq_melee3"}
+	if math.random(1, 2) == 1 then
+		self.AnimTbl_MeleeAttack = {"vjseq_melee2", "vjseq_melee3"}
 		self.TimeUntilMeleeAttackDamage = 0.4
 		self.MeleeAttackExtraTimers = {}
-		self.MeleeAttackDamage = GetConVarNumber("vj_eye_carnophage_d_reg")
+		self.MeleeAttackDamage = 30
 	else
 		self.AnimTbl_MeleeAttack = {"vjseq_melee"}
 		self.TimeUntilMeleeAttackDamage = 0.32
 		self.MeleeAttackExtraTimers = {0.6}
-		self.MeleeAttackDamage = GetConVarNumber("vj_eye_carnophage_d_dual")
+		self.MeleeAttackDamage = 18
 	end
-end
-/*-----------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
-	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
-	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
------------------------------------------------*/
+end*/

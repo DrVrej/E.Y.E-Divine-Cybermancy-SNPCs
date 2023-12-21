@@ -1,17 +1,18 @@
 AddCSLuaFile("shared.lua")
-include('shared.lua')
+include("shared.lua")
 /*-----------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
+	*** Copyright (c) 2012-2024 by DrVrej, All rights reserved. ***
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
 ENT.Model = {"models/vj_eye/deusex.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
-ENT.StartHealth = GetConVarNumber("vj_eye_deusex_h")
+ENT.StartHealth = 6000
 ENT.HullType = HULL_LARGE
 ENT.VJ_IsHugeMonster = true -- Is this a huge monster?
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from props
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
@@ -19,33 +20,27 @@ ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB) -- Type of Damage
 ENT.MeleeAttackDistance = 105 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 250 -- How far does the damage go?
 ENT.TimeUntilMeleeAttackDamage = 0.62 -- This counted in seconds | This calculates the time until it hits something
-ENT.MeleeAttackDamage = GetConVarNumber("vj_eye_deusex_d")
+ENT.MeleeAttackDamage = 75
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
-ENT.MeleeAttackKnockBack_Forward1 = 580 -- How far it will push you forward | First in math.random
-ENT.MeleeAttackKnockBack_Forward2 = 620 -- How far it will push you forward | Second in math.random
-ENT.MeleeAttackKnockBack_Up1 = 580 -- How far it will push you up | First in math.random
-ENT.MeleeAttackKnockBack_Up2 = 610 -- How far it will push you up | Second in math.random
 
 ENT.HasRangeAttack = true -- Should the SNPC have a range attack?
-ENT.AnimTbl_RangeAttack = {ACT_IDLE_ANGRY} -- Range Attack Animations
+ENT.DisableRangeAttackAnimation = true -- if true, it will disable the animation code
+ENT.RangeAttackAnimationStopMovement = false -- Should it stop moving when performing a range attack?
 ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket" -- The entity that is spawned when range attacking
 ENT.RangeDistance = 8000 -- This is how far away it can shoot
 ENT.RangeToMeleeDistance = 500 -- How close does it have to be until it uses melee?
 ENT.RangeUseAttachmentForPos = true -- Should the projectile spawn on a attachment?
 ENT.RangeUseAttachmentForPosID = "missile" -- The attachment used on the range attack if RangeUseAttachmentForPos is set to true
 ENT.TimeUntilRangeAttackProjectileRelease = 0.4 -- How much time until the projectile code is ran?
-ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
+ENT.NextAnyAttackTime_Range = 5 -- How much time until it can use a range attack?
 ENT.RangeAttackReps = 7 -- How many times does it run the projectile code?
-ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from props
+
+ENT.NoChaseAfterCertainRange = true -- Should the SNPC not be able to chase when it's between number x and y?
+ENT.NoChaseAfterCertainRange_FarDistance = 4000 -- How far until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
+ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
+ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.HasWorldShakeOnMove = true -- Should the world shake when it's moving?
-ENT.NextWorldShakeOnRun = 0.6 -- How much time until the world shakes while it's running
-ENT.NextWorldShakeOnWalk = 0.6 -- How much time until the world shakes while it's walking
-ENT.WorldShakeOnMoveAmplitude = 10 -- How much the screen will shake | From 1 to 16, 1 = really low 16 = really high
-ENT.WorldShakeOnMoveRadius = 4000 -- How far the screen shake goes, in world units
-ENT.WorldShakeOnMoveDuration = 0.4 -- How long the screen shake will last, in seconds
-ENT.WorldShakeOnMoveFrequency = 100 -- Just leave it to 100
 ENT.FootStepTimeRun = 0.6 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
 	-- ====== Sound File Paths ====== --
@@ -71,32 +66,33 @@ ENT.BeforeLeapAttackSoundLevel = 95
 ENT.PainSoundLevel = 95
 ENT.DeathSoundLevel = 95
 
-ENT.RangeAttackPitch1 = 100
-ENT.RangeAttackPitch2 = 100
-
--- Custom
-ENT.Deusex_NextGunRotate = 0
+ENT.RangeAttackPitch = VJ.SET(100, 100)
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(90, 90, 420), Vector(-90, -90, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
-	if self.RangeAttacking == true && CurTime() > self.Deusex_NextGunRotate then
-		self:RestartGesture(ACT_GESTURE_RANGE_ATTACK1)
-		self.Deusex_NextGunRotate = CurTime() + 0.2
+function ENT:TranslateActivity(act)
+	if act == ACT_IDLE && (self:GetNPCState() == NPC_STATE_ALERT or self:GetNPCState() == NPC_STATE_COMBAT) then
+		return ACT_IDLE_ANGRY
 	end
+	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_OverrideProjectilePos(TheProjectile)
-	return self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos +self:GetUp()*-35
+function ENT:CustomOnFootStepSound(moveType, sdFile)
+	util.ScreenShake(self:GetPos(), 10, 100, 0.4, 4000)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_GetShootPos(TheProjectile)
-	return self:CalculateProjectile("Line", self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos +self:GetUp()*-35, self:GetEnemy():GetPos() + self:GetEnemy():OBBCenter(), 5000)
+function ENT:MeleeAttackKnockbackVelocity(hitEnt)
+	return self:GetForward()*math.random(580, 620) + self:GetUp()*math.random(580, 610)
 end
-/*-----------------------------------------------
-	*** Copyright (c) 2012-2021 by DrVrej, All rights reserved. ***
-	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
-	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
------------------------------------------------*/
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:RangeAttackCode_OverrideProjectilePos(projectile)
+	self:RestartGesture(ACT_GESTURE_RANGE_ATTACK1)
+	return self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos + self:GetForward()*50 + self:GetUp()*-35
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:RangeAttackCode_GetShootPos(projectile)
+	local projPos = projectile:GetPos()
+	return self:CalculateProjectile("Line", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 5000), 5000)
+end
