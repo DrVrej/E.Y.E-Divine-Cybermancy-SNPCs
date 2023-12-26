@@ -45,15 +45,15 @@ ENT.FootStepTimeRun = 0.6 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_FootStep = {"deuseye/deus_footstep_01_mono.wav","deuseye/deus_footstep_02_mono.wav"}
-ENT.SoundTbl_Idle = {"deuseye/deus_idle_1.wav","deuseye/deus_idle_2.wav"}
-ENT.SoundTbl_Alert = {"deuseye/deus_scream_1.wav","deuseye/deus_scream_2.wav"}
-ENT.SoundTbl_MeleeAttack = {"deuseye/deus_scream_3.wav","deuseye/deus_scream_4.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav","vj_eye/deusex/deus_idle_2.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/deusex/deus_scream_1.wav","vj_eye/deusex/deus_scream_2.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/deusex/deus_scream_3.wav","vj_eye/deusex/deus_scream_4.wav"}
 ENT.SoundTbl_MeleeAttackExtra = {"vj_impact_metal/metalhit1.wav","vj_impact_metal/metalhit2.wav","vj_impact_metal/metalhit3.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eyegeneral/swipe01.wav","vj_eyegeneral/swipe02.wav","vj_eyegeneral/swipe03.wav"}
-ENT.SoundTbl_RangeAttack = {"deuseye/deus_walk_01_mono.wav","deuseye/deus_walk_02_mono.wav"}
-ENT.SoundTbl_Pain = {"deuseye/deus_scream_5.wav","deuseye/deus_scream_6.wav"}
-ENT.SoundTbl_Death = {"deuseye/deus_scream_7.wav","deuseye/deus_scream_8.wav","deuseye/deus_scream_9.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
+ENT.SoundTbl_RangeAttack = {"vj_eye/deusex/deus_walk_01_mono.wav","vj_eye/deusex/deus_walk_02_mono.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/deusex/deus_scream_5.wav","vj_eye/deusex/deus_scream_6.wav"}
+ENT.SoundTbl_Death = {"vj_eye/deusex/deus_scream_7.wav","vj_eye/deusex/deus_scream_8.wav","vj_eye/deusex/deus_scream_9.wav"}
 
 ENT.FootStepSoundLevel = 80
 ENT.AlertSoundLevel = 95

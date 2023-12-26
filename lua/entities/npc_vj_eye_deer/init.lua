@@ -1,3 +1,4 @@
+include("entities/npc_vj_eye_forma/init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 /*-----------------------------------------------

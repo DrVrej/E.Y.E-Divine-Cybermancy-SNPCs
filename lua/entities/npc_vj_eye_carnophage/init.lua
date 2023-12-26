@@ -42,16 +42,16 @@ ENT.HitGroupFlinching_Values = {
 }
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_FootStep = {"carnoeye/carnofoot1.mp3","carnoeye/carnofoot2.mp3"}
-ENT.SoundTbl_Idle = {"carnoeye/idle1.wav","carnoeye/idle2.wav","carnoeye/idle3.wav"}
-ENT.SoundTbl_Alert = {"carnoeye/alert1.wav","carnoeye/alert3.wav"}
-ENT.SoundTbl_BeforeMeleeAttack = {"carnoeye/leap1.wav","carnoeye/leap2.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eyegeneral/swipe01.wav","vj_eyegeneral/swipe02.wav","vj_eyegeneral/swipe03.wav"}
-ENT.SoundTbl_Pain = {"carnoeye/pain1.wav","carnoeye/pain2.wav"}
-ENT.SoundTbl_Death = {"carnoeye/scream.wav","carnoeye/die2.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3","vj_eye/carnophage/carnofoot2.mp3"}
+ENT.SoundTbl_Idle = {"vj_eye/carnophage/idle1.wav","vj_eye/carnophage/idle2.wav","vj_eye/carnophage/idle3.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/carnophage/alert1.wav","vj_eye/carnophage/alert3.wav"}
+ENT.SoundTbl_BeforeMeleeAttack = {"vj_eye/carnophage/leap1.wav","vj_eye/carnophage/leap2.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/carnophage/pain1.wav","vj_eye/carnophage/pain2.wav"}
+ENT.SoundTbl_Death = {"vj_eye/carnophage/scream.wav","vj_eye/carnophage/die2.wav"}
 
-local sdAlertRegular = {"carnoeye/alert1.wav", "carnoeye/alert3.wav"}
-local sdAlertAngry = {"carnoeye/gurgle_loop1.wav"}
+local sdAlertRegular = {"vj_eye/carnophage/alert1.wav", "vj_eye/carnophage/alert3.wav"}
+local sdAlertAngry = {"vj_eye/carnophage/gurgle_loop1.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(22, 22, 80), Vector(-22, -22, 0))

@@ -13,10 +13,10 @@ ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_Idle = {"animaleye/limacue_idle.wav", "animaleye/limacue_idle2.wav"}
-ENT.SoundTbl_Alert = {"animaleye/limacue_fear.wav"}
-ENT.SoundTbl_Pain = {"animaleye/limacue_fear.wav"}
-ENT.SoundTbl_Death = {"animaleye/limacue_die.wav", "animaleye/limacue_die2.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/animals/limacue_idle.wav", "vj_eye/animals/limacue_idle2.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/animals/limacue_fear.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/animals/limacue_fear.wav"}
+ENT.SoundTbl_Death = {"vj_eye/animals/limacue_die.wav", "vj_eye/animals/limacue_die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(12, 12, 18), Vector(-12, -12, 0))

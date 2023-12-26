@@ -54,16 +54,16 @@ ENT.HitGroupFlinching_Values = {
 }
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_FootStep = {"formaeye/foot1.wav","formaeye/foot2.wav","formaeye/foot3.wav","formaeye/foot4.wav"}
-//ENT.SoundTbl_Breath = {"formaeye/breathe_loop1.wav"}
-ENT.SoundTbl_Idle = {"formaeye/idle1.wav","formaeye/idle2.wav","formaeye/idle3.wav","formaeye/breathe_loop1.wav"}
-ENT.SoundTbl_Alert = {"formaeye/alert1.wav","formaeye/alert2.wav"}
-ENT.SoundTbl_MeleeAttack = {"formaeye/claw_strike1.wav","formaeye/claw_strike2.wav","formaeye/claw_strike3.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"formaeye/claw_miss1.wav"}
-ENT.SoundTbl_LeapAttackJump = {"formaeye/leap1.wav"}
-ENT.SoundTbl_LeapAttackDamage = {"formaeye/claw_strike1.wav","formaeye/claw_strike2.wav","formaeye/claw_strike3.wav"}
-ENT.SoundTbl_Pain = {"formaeye/pain1.wav","formaeye/pain2.wav"}
-ENT.SoundTbl_Death = {"formaeye/die1.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/forma/foot1.wav","vj_eye/forma/foot2.wav","vj_eye/forma/foot3.wav","vj_eye/forma/foot4.wav"}
+//ENT.SoundTbl_Breath = {"vj_eye/forma/breathe_loop1.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/forma/idle1.wav","vj_eye/forma/idle2.wav","vj_eye/forma/idle3.wav","vj_eye/forma/breathe_loop1.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/forma/alert1.wav","vj_eye/forma/alert2.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/forma/claw_strike1.wav","vj_eye/forma/claw_strike2.wav","vj_eye/forma/claw_strike3.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/forma/claw_miss1.wav"}
+ENT.SoundTbl_LeapAttackJump = {"vj_eye/forma/leap1.wav"}
+ENT.SoundTbl_LeapAttackDamage = {"vj_eye/forma/claw_strike1.wav","vj_eye/forma/claw_strike2.wav","vj_eye/forma/claw_strike3.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/forma/pain1.wav","vj_eye/forma/pain2.wav"}
+ENT.SoundTbl_Death = {"vj_eye/forma/die1.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(18, 18, 60), Vector(-18, -18, 0))

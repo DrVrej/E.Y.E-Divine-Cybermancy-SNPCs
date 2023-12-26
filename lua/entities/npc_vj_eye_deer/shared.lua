@@ -1,4 +1,4 @@
-ENT.Base 			= "npc_vj_eye_forma"
+ENT.Base 			= "npc_vj_creature_base"
 ENT.Type 			= "ai"
 ENT.PrintName 		= "Evil Deer"
 ENT.Author 			= "DrVrej"

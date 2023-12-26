@@ -14,10 +14,10 @@ ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should 
 ENT.GibOnDeathDamagesTable = {"All"} -- Damages that it gibs from | "UseDefault" = Uses default damage types | "All" = Gib from any damage
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_Idle = {"animaleye/bug_idle.wav"}
-ENT.SoundTbl_Alert = {"animaleye/bug_fear.wav"}
-ENT.SoundTbl_Pain = {"animaleye/bug_die3.wav"}
-ENT.SoundTbl_Death = {"animaleye/bug_die.wav", "animaleye/bug_die2.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/animals/bug_idle.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/animals/bug_fear.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/animals/bug_die3.wav"}
+ENT.SoundTbl_Death = {"vj_eye/animals/bug_die.wav", "vj_eye/animals/bug_die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(12, 12, 13), Vector(-12, -12, 0))
