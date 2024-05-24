@@ -13,9 +13,9 @@ ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
-ENT.MeleeAttackDistance = 45 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.MeleeAttackDistance = 45 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = 0.6 -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 18
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
@@ -42,7 +42,7 @@ ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = {ACT_BIG_FLINCH} -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_BIG_FLINCH -- If it uses normal based animation, use this
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},

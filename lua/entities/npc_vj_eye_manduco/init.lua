@@ -14,11 +14,11 @@ ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should 
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.TimeUntilMeleeAttackDamage = 0.45
-ENT.MeleeAttackDistance = 40 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 75 -- How far does the damage go?
+ENT.MeleeAttackDistance = 40 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 75 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 
 ENT.HasRangeAttack = true -- Should the SNPC have a range attack?
-ENT.AnimTbl_RangeAttack = {ACT_RANGE_ATTACK1} -- Range Attack Animations
+ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1 -- Range Attack Animations
 ENT.RangeAttackEntityToSpawn = "obj_eye_fireball" -- The entity that is spawned when range attacking
 ENT.RangeDistance = 700 -- This is how far away it can shoot
 ENT.RangeToMeleeDistance = 200 -- How close does it have to be until it uses melee?
@@ -33,7 +33,7 @@ ENT.FootStepTimeRun = 0.45 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = {ACT_FLINCH_PHYSICS} -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},

@@ -17,8 +17,8 @@ ENT.AnimTbl_MeleeAttack = {"vjseq_melee"}
 ENT.TimeUntilMeleeAttackDamage = 0.32
 ENT.MeleeAttackExtraTimers = {0.6}
 ENT.MeleeAttackDamage = 18
-ENT.MeleeAttackDistance = 40 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
+ENT.MeleeAttackDistance = 40 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
 ENT.MeleeAttackBleedEnemyChance = 1 -- How chance there is that the play will bleed? | 1 = always
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
@@ -30,7 +30,7 @@ ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = {ACT_FLINCH_PHYSICS} -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},

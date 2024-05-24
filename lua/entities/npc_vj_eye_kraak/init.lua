@@ -13,8 +13,8 @@ ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.MeleeAttackDistance = 54 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 115 -- How far does the damage go?
+ENT.MeleeAttackDistance = 54 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 115 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
 
 ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running

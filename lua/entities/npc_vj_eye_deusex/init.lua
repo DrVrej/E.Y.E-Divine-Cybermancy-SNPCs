@@ -15,10 +15,10 @@ ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should 
 ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from props
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
 ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB) -- Type of Damage
-ENT.MeleeAttackDistance = 105 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 250 -- How far does the damage go?
+ENT.MeleeAttackDistance = 105 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 250 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = 0.62 -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 75
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
