@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_eye/carnophage.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_eye/carnophage.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 200
 ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -13,11 +13,10 @@ ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.AnimTbl_MeleeAttack = {"vjseq_melee"}
-ENT.TimeUntilMeleeAttackDamage = 0.32
-ENT.MeleeAttackExtraTimers = {0.6}
+ENT.AnimTbl_MeleeAttack = "vjseq_melee"
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 18
-ENT.MeleeAttackDistance = 40 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDistance = 55 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
 ENT.MeleeAttackBleedEnemyChance = 1 -- How chance there is that the play will bleed? | 1 = always
@@ -56,6 +55,17 @@ local sdAlertAngry = {"vj_eye/carnophage/gurgle_loop1.wav"}
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(22, 22, 80), Vector(-22, -22, 0))
 	self:SetSkin(math.random(0, 3))
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+local getEventName = util.GetAnimEventNameByID
+--
+function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+	local eventName = getEventName(ev)
+	if eventName == "AE_CARNO_ATTACK_RIGHT" or eventName == "AE_CARNO_ATTACK_LEFT" then
+		self:MeleeAttackCode()
+	//elseif eventName == "AE_CARNO_GALLOP_RIGHT" or eventName == "AE_CARNO_GALLOP_LEFT" then -- For some reason only running animation has it...
+		//self:FootStepSoundCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnAlert()

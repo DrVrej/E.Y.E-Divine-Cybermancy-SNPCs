@@ -5,15 +5,19 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_eye/troopers.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_eye/troopers.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 200
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_FEDERALISTS"} -- NPCs with the same class with be allied to each other
 ENT.BloodColor = "Oil" -- The blood type, this will determine what it should use (decal, particle, etc.)
+
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
+ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1, "melee2"}
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDistance = 40 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+
 ENT.FootStepTimeRun = 0.3 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
@@ -31,30 +35,27 @@ ENT.HitGroupFlinching_Values = {
 }
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_FootStep = {"physics/plaster/ceiling_tile_step4.wav"}
+ENT.SoundTbl_FootStep = "physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/trooper/pass_temple_activate.wav","vj_eye/trooper/scream.wav"}
-//ENT.SoundTbl_CombatIdle = {"vj_eye/trooper/alarm.wav"} -- Avoid using, its a looping wav file!
-ENT.SoundTbl_Alert = {"vj_eye/trooper/active.wav"}
+//ENT.SoundTbl_CombatIdle = "vj_eye/trooper/alarm.wav" -- Avoid using, its a looping wav file!
+ENT.SoundTbl_Alert = "vj_eye/trooper/active.wav"
 ENT.SoundTbl_MeleeAttack = {"vj_eye/trooper/attack1.wav","vj_eye/trooper/attack2.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
 ENT.SoundTbl_Pain = {"vj_eye/trooper/pain1.wav","vj_eye/trooper/pain2.wav"}
 ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav","ambient/energy/spark2.wav","ambient/energy/spark3.wav","ambient/energy/spark4.wav"}
-ENT.SoundTbl_Death = {"vj_eye/trooper/die.wav"}
+ENT.SoundTbl_Death = "vj_eye/trooper/die.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(25, 25, 80), Vector(-25, -25, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MultipleMeleeAttacks()
-	if math.random(1, 2) == 1 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee1"}
-		self.TimeUntilMeleeAttackDamage = 0.5
-		self.MeleeAttackExtraTimers = {0.65}
-		self.MeleeAttackDamage = 30
-	else
-		self.AnimTbl_MeleeAttack = {"vjseq_melee2"}
-		self.TimeUntilMeleeAttackDamage = 0.35
-		self.MeleeAttackExtraTimers = {0.5, 0.6, 0.78}
-		self.MeleeAttackDamage = 20
+local getEventName = util.GetAnimEventNameByID
+--
+function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+	local eventName = getEventName(ev)
+	if eventName == "AE_TROOPERS_ATTACK_LEFT" or eventName == "AE_TROOPERS_ATTACK_RIGHT" then
+		self:MeleeAttackCode()
+	//elseif eventName == "AE_TROOPERS_GALLOP_LEFT" or eventName == "AE_TROOPERS_GALLOP_RIGHT" then -- For some reason only running animation has it...
+		//self:FootStepSoundCode()
 	end
 end

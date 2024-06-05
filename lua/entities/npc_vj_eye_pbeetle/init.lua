@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_eye/bug.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_eye/bug.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 10
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -14,9 +14,9 @@ ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should 
 ENT.GibOnDeathDamagesTable = {"All"} -- Damages that it gibs from | "UseDefault" = Uses default damage types | "All" = Gib from any damage
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_Idle = {"vj_eye/animals/bug_idle.wav"}
-ENT.SoundTbl_Alert = {"vj_eye/animals/bug_fear.wav"}
-ENT.SoundTbl_Pain = {"vj_eye/animals/bug_die3.wav"}
+ENT.SoundTbl_Idle = "vj_eye/animals/bug_idle.wav"
+ENT.SoundTbl_Alert = "vj_eye/animals/bug_fear.wav"
+ENT.SoundTbl_Pain = "vj_eye/animals/bug_die3.wav"
 ENT.SoundTbl_Death = {"vj_eye/animals/bug_die.wav", "vj_eye/animals/bug_die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
@@ -41,8 +41,8 @@ function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 		ParticleEffect("antlion_gib_02_blood", self:GetPos(), self:GetAngles())
 	end
 	
-	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(-5,0,10)), Vel = Vector(0,math.Rand(-100,100),0)})
-	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(5,0,10)), Vel = Vector(0,math.Rand(-100,100),0)})
-	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(10,0,10)), Vel = Vector(0,math.Rand(-100,100),0)})
+	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(-5, 0, 10)), Vel = Vector(0, math.Rand(-100, 100), 0)})
+	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(5, 0, 10)), Vel = Vector(0, math.Rand(-100, 100), 0)})
+	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(10, 0, 10)), Vel = Vector(0, math.Rand(-100, 100), 0)})
 	return true
 end

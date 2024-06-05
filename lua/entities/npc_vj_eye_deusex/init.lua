@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_eye/deusex.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_eye/deusex.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 6000
 ENT.HullType = HULL_LARGE
 ENT.VJ_IsHugeMonster = true -- Is this a huge monster?
@@ -17,8 +17,8 @@ ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from pro
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
 ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB) -- Type of Damage
-ENT.MeleeAttackDistance = 105 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 250 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDistance = 200 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 230 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = 0.62 -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 75
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
@@ -32,7 +32,8 @@ ENT.RangeToMeleeDistance = 500 -- How close does it have to be until it uses mel
 ENT.RangeUseAttachmentForPos = true -- Should the projectile spawn on a attachment?
 ENT.RangeUseAttachmentForPosID = "missile" -- The attachment used on the range attack if RangeUseAttachmentForPos is set to true
 ENT.TimeUntilRangeAttackProjectileRelease = 0.4 -- How much time until the projectile code is ran?
-ENT.NextAnyAttackTime_Range = 5 -- How much time until it can use a range attack?
+ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
+ENT.NextAnyAttackTime_Range = 3 -- How much time until it can use a range attack?
 ENT.RangeAttackReps = 7 -- How many times does it run the projectile code?
 
 ENT.NoChaseAfterCertainRange = true -- Should the SNPC not be able to chase when it's between number x and y?
@@ -41,8 +42,7 @@ ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near unti
 ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.FootStepTimeRun = 0.6 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
+ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
 ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
@@ -70,6 +70,13 @@ ENT.RangeAttackPitch = VJ.SET(100, 100)
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(90, 90, 420), Vector(-90, -90, 0))
+	self:SetStepHeight(150)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+	if ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
+		self:FootStepSoundCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)

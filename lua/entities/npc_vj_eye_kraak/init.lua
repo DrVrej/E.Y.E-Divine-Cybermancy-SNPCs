@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_eye/kraak.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_eye/kraak.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 600
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -13,13 +13,13 @@ ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.MeleeAttackDistance = 54 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 115 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
+ENT.TimeUntilMeleeAttackDamage = false
+ENT.MeleeAttackDistance = 95 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 
-ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
+ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
 ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav","vj_eye/kraak/tank_walk02.wav","vj_eye/kraak/tank_walk03.wav","vj_eye/kraak/tank_walk04.wav","vj_eye/kraak/tank_walk05.wav","vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
@@ -31,11 +31,23 @@ ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_ey
 ENT.SoundTbl_Pain = {"vj_eye/kraak/kranagull_scream_6.wav"}
 ENT.SoundTbl_Death = {"vj_eye/kraak/kranagull_scream_7.wav","vj_eye/kraak/kranagull_scream_8.wav"}
 
-local sdAlertRegular = {"vj_eye/kraak/kranagull_scream_4.wav"}
-local sdAlertAngry = {"vj_eye/kraak/kranagull_scream_3.wav"}
+local sdAlertRegular = "vj_eye/kraak/kranagull_scream_4.wav"
+local sdAlertAngry = "vj_eye/kraak/kranagull_scream_3.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(30, 30, 150), Vector(-30, -30, 0))
+	self:SetStepHeight(90)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+local getEventName = util.GetAnimEventNameByID
+--
+function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+	local eventName = getEventName(ev)
+	if eventName == "AE_KRAAK_ATTACK_LEFT" or eventName == "AE_KRAAK_ATTACK_RIGHT" then
+		self:MeleeAttackCode()
+	elseif ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
+		self:FootStepSoundCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnFootStepSound(moveType, sdFile)
@@ -52,26 +64,17 @@ function ENT:CustomOnAlert()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MeleeAttackKnockbackVelocity(hitEnt)
-	return self:GetForward()*math.random(200, 230) + self:GetUp()*math.random(300, 330)
-end
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MultipleMeleeAttacks()
-	local randAttack = math.random(1, 3)
-	if randAttack == 1 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee","vjseq_melee2"}
-		self.TimeUntilMeleeAttackDamage = 0.45
+function ENT:CustomOnMeleeAttack_BeforeChecks()
+	local curSeq = self:GetSequenceName(self:GetSequence())
+	if curSeq == "Melee" or curSeq == "Melee2" then -- Smashes
 		self.MeleeAttackDamage = 75
 		self.HasMeleeAttackKnockBack = false
-	elseif randAttack == 2 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee3"}
-		self.TimeUntilMeleeAttackDamage = 0.55
-		self.MeleeAttackDamage = 60
-		self.HasMeleeAttackKnockBack = true
-	elseif randAttack == 3 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee4"}
-		self.TimeUntilMeleeAttackDamage = 0.5
+	else -- Slashes | "Melee3", "Melee4"
 		self.MeleeAttackDamage = 60
 		self.HasMeleeAttackKnockBack = true
 	end
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:MeleeAttackKnockbackVelocity(hitEnt)
+	return self:GetForward()*math.random(200, 230) + self:GetUp()*math.random(300, 330)
 end
