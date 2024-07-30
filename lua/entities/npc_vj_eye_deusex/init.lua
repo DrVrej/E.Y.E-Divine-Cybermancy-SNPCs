@@ -29,8 +29,6 @@ ENT.RangeAttackAnimationStopMovement = false -- Should it stop moving when perfo
 ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket" -- The entity that is spawned when range attacking
 ENT.RangeDistance = 8000 -- This is how far away it can shoot
 ENT.RangeToMeleeDistance = 500 -- How close does it have to be until it uses melee?
-ENT.RangeUseAttachmentForPos = true -- Should the projectile spawn on a attachment?
-ENT.RangeUseAttachmentForPosID = "missile" -- The attachment used on the range attack if RangeUseAttachmentForPos is set to true
 ENT.TimeUntilRangeAttackProjectileRelease = 0.4 -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
 ENT.NextAnyAttackTime_Range = 3 -- How much time until it can use a range attack?
@@ -94,12 +92,12 @@ function ENT:MeleeAttackKnockbackVelocity(hitEnt)
 	return self:GetForward()*math.random(580, 620) + self:GetUp()*math.random(580, 610)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_OverrideProjectilePos(projectile)
+function ENT:RangeAttackProjSpawnPos(projectile)
 	self:RestartGesture(ACT_GESTURE_RANGE_ATTACK1)
-	return self:GetAttachment(self:LookupAttachment(self.RangeUseAttachmentForPosID)).Pos + self:GetForward()*50 + self:GetUp()*-35
+	return self:GetAttachment(self:LookupAttachment("missile")).Pos + self:GetForward()*50 + self:GetUp()*-35
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_GetShootPos(projectile)
+function ENT:RangeAttackProjVelocity(projectile)
 	local projPos = projectile:GetPos()
 	return self:CalculateProjectile("Line", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 5000), 5000)
 end

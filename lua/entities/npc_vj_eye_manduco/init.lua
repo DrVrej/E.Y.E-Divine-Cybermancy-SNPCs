@@ -25,8 +25,6 @@ ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1 -- Range Attack Animations
 ENT.RangeAttackEntityToSpawn = "obj_eye_fireball" -- The entity that is spawned when range attacking
 ENT.RangeDistance = 700 -- This is how far away it can shoot
 ENT.RangeToMeleeDistance = 200 -- How close does it have to be until it uses melee?
-ENT.RangeUseAttachmentForPos = true -- Should the projectile spawn on a attachment?
-ENT.RangeUseAttachmentForPosID = "fireball" -- The attachment used on the range attack if RangeUseAttachmentForPos is set to true
 ENT.TimeUntilRangeAttackProjectileRelease = false -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
 
@@ -73,7 +71,11 @@ function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackCode_GetShootPos(projectile)
+function ENT:RangeAttackProjSpawnPos(projectile)
+	return self:GetAttachment(self:LookupAttachment("fireball")).Pos
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:RangeAttackProjVelocity(projectile)
 	local projPos = projectile:GetPos()
 	return self:CalculateProjectile("Curve", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 700), 700)
 end
