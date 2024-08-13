@@ -32,16 +32,16 @@ end
 function ENT:OnTakeDamage(dmginfo,data)
 	self:SpawnBloodParticles(dmginfo)
 	self:SpawnBloodDecal(dmginfo)
-	self:EmitSound("vj_flesh/alien_flesh1.wav", 80, math.random(80, 100))
+	self:EmitSound("vj_base/impact/flesh_alien.wav", 80, math.random(80, 100))
 	
 	self:SetHealth(self:Health() -dmginfo:GetDamage())
 	if self:Health() <= 0 && self.Dead == false then
 		self:SetHealth(self:GetMaxHealth())
 		self.Dead = true
 	
-		self:EmitSound("vj_gib/gibbing1.wav", 75, math.random(80, 100))
-		self:EmitSound("vj_gib/gibbing2.wav", 75, math.random(80, 100))
-		self:EmitSound("vj_gib/gibbing3.wav", 75, math.random(80, 100))
+		self:EmitSound("vj_base/gib/break1.wav", 75, math.random(80, 100))
+		self:EmitSound("vj_base/gib/break2.wav", 75, math.random(80, 100))
+		self:EmitSound("vj_base/gib/break3.wav", 75, math.random(80, 100))
 
 		self:SpawnBloodParticles(dmginfo)
 		self:SpawnBloodParticles(dmginfo)

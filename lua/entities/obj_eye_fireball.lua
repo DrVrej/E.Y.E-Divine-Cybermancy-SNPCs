@@ -24,7 +24,7 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 if !SERVER then return end
 
-ENT.Model = {"models/dav0r/hoverball.mdl"} -- The models it should spawn with | Picks a random one from the table
+ENT.Model = "models/dav0r/hoverball.mdl" -- The models it should spawn with | Picks a random one from the table
 ENT.DoesRadiusDamage = true -- Should it do a blast damage when it hits something?
 ENT.RadiusDamageRadius = 110 -- How far the damage go? The farther away it's from its enemy, the less damage it will do | Counted in world units
 ENT.RadiusDamage = 25 -- How much damage should it deal? Remember this is a radius damage, therefore it will do less damage the farther away the entity is from its enemy
@@ -36,8 +36,8 @@ ENT.ShakeWorldOnDeathAmplitude = 16 -- How much the screen will shake | From 1 t
 ENT.ShakeWorldOnDeathRadius = 800 -- How far the screen shake goes, in world units
 ENT.ShakeWorldOnDeathFrequency = 200 -- The frequency
 ENT.DecalTbl_DeathDecals = {"Scorch"}
-ENT.SoundTbl_Idle = {"ambient/fire/fire_small_loop1.wav"}
-ENT.SoundTbl_OnCollide = {"vj_fire/fireball_explode.wav"}
+ENT.SoundTbl_Idle = "ambient/fire/fire_small_loop1.wav"
+ENT.SoundTbl_OnCollide = "vj_base/ambience/fireball_explode.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomPhysicsObjectOnInitialize(phys)
 	phys:Wake()

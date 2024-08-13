@@ -49,7 +49,7 @@ ENT.SoundTbl_Idle = {"vj_eye/manduco/idle.wav","vj_eye/manduco/idle2.wav","vj_ey
 ENT.SoundTbl_Alert = {"vj_eye/manduco/alert1.wav","vj_eye/manduco/alert2.wav"}
 ENT.SoundTbl_MeleeAttack = {"vj_eye/manduco/leap1.wav","vj_eye/manduco/scream1.wav","vj_eye/manduco/breathe.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
-ENT.SoundTbl_RangeAttack = "vj_fire/fireball_throw.wav"
+ENT.SoundTbl_RangeAttack = "vj_base/ambience/fireball_throw.wav"
 ENT.SoundTbl_Pain = {"vj_eye/manduco/pain1.wav","vj_eye/manduco/pain2.wav"}
 ENT.SoundTbl_Death = {"vj_eye/manduco/die1.wav","vj_eye/manduco/die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
