@@ -33,8 +33,6 @@ ENT.NextLeapAttackTime = 3 -- How much time until it can use a leap attack?
 ENT.LeapAttackExtraTimers = {0.8, 1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
 ENT.NextAnyAttackTime_Leap = 0.8 -- How much time until it can use any attack again? | Counted in Seconds
 ENT.TimeUntilLeapAttackVelocity = 0.6 -- How much time until it runs the velocity code?
-ENT.LeapAttackVelocityForward = 250 -- How much forward force should it apply?
-ENT.LeapAttackVelocityUp = 220 -- How much upward force should it apply?
 ENT.LeapAttackDamage = 25
 ENT.LeapAttackDamageDistance = 150 -- How far does the damage go?
 
@@ -91,4 +89,9 @@ function ENT:TranslateActivity(act)
 		end
 	end
 	return self.BaseClass.TranslateActivity(self, act)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:GetLeapAttackVelocity()
+	local ene = self:GetEnemy()
+	return ((ene:GetPos() + ene:OBBCenter()) - (self:GetPos() + self:OBBCenter())):GetNormal() * 400 + self:GetForward() * 250 + self:GetUp() * 220
 end
