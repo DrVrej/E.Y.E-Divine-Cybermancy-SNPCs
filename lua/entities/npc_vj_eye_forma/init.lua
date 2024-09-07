@@ -49,8 +49,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/forma/foot1.wav","vj_eye/forma/foot2.wav","vj_eye/forma/foot3.wav","vj_eye/forma/foot4.wav"}
 //ENT.SoundTbl_Breath = {"vj_eye/forma/breathe_loop1.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/forma/idle1.wav","vj_eye/forma/idle2.wav","vj_eye/forma/idle3.wav","vj_eye/forma/breathe_loop1.wav"}

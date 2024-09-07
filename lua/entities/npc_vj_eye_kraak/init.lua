@@ -20,8 +20,7 @@ ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let 
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav","vj_eye/kraak/tank_walk02.wav","vj_eye/kraak/tank_walk03.wav","vj_eye/kraak/tank_walk04.wav","vj_eye/kraak/tank_walk05.wav","vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/kraak/kranagull_idle_1.wav","vj_eye/kraak/kranagull_idle_2.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/kraak/kranagull_scream_3.wav"}

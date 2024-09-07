@@ -12,8 +12,7 @@ ENT.HullType = HULL_TINY
 ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.GibOnDeathDamagesTable = {"All"} -- Damages that it gibs from | "UseDefault" = Uses default damage types | "All" = Gib from any damage
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = "vj_eye/animals/bug_idle.wav"
 ENT.SoundTbl_Alert = "vj_eye/animals/bug_fear.wav"
 ENT.SoundTbl_Pain = "vj_eye/animals/bug_die3.wav"

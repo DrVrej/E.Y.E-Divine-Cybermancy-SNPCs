@@ -41,8 +41,7 @@ ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior 
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav","vj_eye/deusex/deus_idle_2.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/deusex/deus_scream_1.wav","vj_eye/deusex/deus_scream_2.wav"}

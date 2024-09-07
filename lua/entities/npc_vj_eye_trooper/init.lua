@@ -33,8 +33,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = "physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/trooper/pass_temple_activate.wav","vj_eye/trooper/scream.wav"}
 //ENT.SoundTbl_CombatIdle = "vj_eye/trooper/alarm.wav" -- Avoid using, its a looping wav file!

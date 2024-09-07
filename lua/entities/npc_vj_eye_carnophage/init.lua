@@ -39,8 +39,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3","vj_eye/carnophage/carnofoot2.mp3"}
 ENT.SoundTbl_Idle = {"vj_eye/carnophage/idle1.wav","vj_eye/carnophage/idle2.wav","vj_eye/carnophage/idle3.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/carnophage/alert1.wav","vj_eye/carnophage/alert3.wav"}

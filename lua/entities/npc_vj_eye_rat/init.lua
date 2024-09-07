@@ -11,8 +11,7 @@ ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_eye/animals/rat_idle1.wav", "vj_eye/animals/rat_idle2.wav", "vj_eye/animals/rat_idle3.wav", "vj_eye/animals/rat_idle4.wav"}
 ENT.SoundTbl_Alert = "vj_eye/animals/rat_fear.wav"
 ENT.SoundTbl_Pain = "vj_eye/animals/rat_fear.wav"

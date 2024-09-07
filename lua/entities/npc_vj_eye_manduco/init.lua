@@ -42,8 +42,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/manduco/walk1.wav","vj_eye/manduco/walk2.wav","vj_eye/manduco/walk3.wav","vj_eye/manduco/walk4.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/manduco/idle.wav","vj_eye/manduco/idle2.wav","vj_eye/manduco/idle3.wav","vj_eye/manduco/gurgle.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/manduco/alert1.wav","vj_eye/manduco/alert2.wav"}
