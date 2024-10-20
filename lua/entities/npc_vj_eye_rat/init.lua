@@ -17,6 +17,6 @@ ENT.SoundTbl_Alert = "vj_eye/animals/rat_fear.wav"
 ENT.SoundTbl_Pain = "vj_eye/animals/rat_fear.wav"
 ENT.SoundTbl_Death = {"vj_eye/animals/rat_die1.wav", "vj_eye/animals/rat_die2.wav","vj_eye/animals/rat_die3.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(12, 12, 15), Vector(-12, -12, 0))
 end

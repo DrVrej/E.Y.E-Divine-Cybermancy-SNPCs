@@ -8,14 +8,14 @@ include("shared.lua")
 ENT.Model = "models/vj_eye/deusex.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
 ENT.StartHealth = 6000
 ENT.HullType = HULL_LARGE
-ENT.VJTag_ID_Boss = true -- Is this a huge monster?
+ENT.VJTag_ID_Boss = true
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from props
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB) -- Type of Damage
 ENT.MeleeAttackDistance = 200 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 230 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
@@ -27,7 +27,7 @@ ENT.HasRangeAttack = true -- Can this NPC range attack?
 ENT.DisableRangeAttackAnimation = true -- if true, it will disable the animation code
 ENT.RangeAttackAnimationStopMovement = false -- Should it stop moving when performing a range attack?
 ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket" -- The entity that is spawned when range attacking
-ENT.RangeDistance = 8000 -- This is how far away it can shoot
+ENT.RangeDistance = 8000 -- How far can it range attack?
 ENT.RangeToMeleeDistance = 500 -- How close does it have to be until it uses melee?
 ENT.TimeUntilRangeAttackProjectileRelease = 0.4 -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
@@ -65,12 +65,12 @@ ENT.DeathSoundLevel = 95
 
 ENT.RangeAttackPitch = VJ.SET(100, 100)
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(90, 90, 420), Vector(-90, -90, 0))
 	self:SetStepHeight(150)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
 		self:FootStepSoundCode()
 	end
@@ -83,7 +83,7 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnFootStepSound(moveType, sdFile)
+function ENT:OnFootstepSound(moveType, sdFile)
 	util.ScreenShake(self:GetPos(), 10, 100, 0.4, 4000)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

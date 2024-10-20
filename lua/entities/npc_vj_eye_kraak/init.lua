@@ -33,14 +33,14 @@ ENT.SoundTbl_Death = {"vj_eye/kraak/kranagull_scream_7.wav","vj_eye/kraak/kranag
 local sdAlertRegular = "vj_eye/kraak/kranagull_scream_4.wav"
 local sdAlertAngry = "vj_eye/kraak/kranagull_scream_3.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(30, 30, 150), Vector(-30, -30, 0))
 	self:SetStepHeight(90)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_KRAAK_ATTACK_LEFT" or eventName == "AE_KRAAK_ATTACK_RIGHT" then
 		self:MeleeAttackCode()
@@ -49,11 +49,11 @@ function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnFootStepSound(moveType, sdFile)
+function ENT:OnFootstepSound(moveType, sdFile)
 	util.ScreenShake(self:GetPos(), 10, 100, 0.4, 500)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAlert()
+function ENT:OnAlert(ent)
 	if self.VJ_IsBeingControlled == true then return end
 	if math.random(1, 2) == 1 then
 		self.SoundTbl_Alert = sdAlertAngry

@@ -18,14 +18,14 @@ ENT.SoundTbl_Alert = "vj_eye/animals/bug_fear.wav"
 ENT.SoundTbl_Pain = "vj_eye/animals/bug_die3.wav"
 ENT.SoundTbl_Death = {"vj_eye/animals/bug_die.wav", "vj_eye/animals/bug_die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(12, 12, 13), Vector(-12, -12, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
 function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
-	if self.HasGibDeathParticles then
+	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
 		effectData:SetColor(colorYellow)

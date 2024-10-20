@@ -13,7 +13,7 @@ ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDistance = 45 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
@@ -25,7 +25,7 @@ ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 
 ENT.HasLeapAttack = true -- Can this NPC leap attack?
-ENT.AnimTbl_LeapAttack = ACT_RANGE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_LeapAttack = ACT_RANGE_ATTACK1
 ENT.LeapDistance = 400 -- The max distance that the NPC can leap from
 ENT.LeapToMeleeDistance = 200 -- How close does it have to be until it uses melee?
 ENT.TimeUntilLeapAttackDamage = 0.65 -- How much time until it runs the leap damage code?
@@ -39,7 +39,7 @@ ENT.LeapAttackDamageDistance = 150 -- How far does the damage go?
 ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_BIG_FLINCH -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_BIG_FLINCH -- The regular flinch animations to play
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
@@ -61,7 +61,7 @@ ENT.SoundTbl_LeapAttackDamage = {"vj_eye/forma/claw_strike1.wav","vj_eye/forma/c
 ENT.SoundTbl_Pain = {"vj_eye/forma/pain1.wav","vj_eye/forma/pain2.wav"}
 ENT.SoundTbl_Death = "vj_eye/forma/die1.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(18, 18, 60), Vector(-18, -18, 0))
 	if self:GetModel() == "models/vj_eye/forma.mdl" then
 		self:SetSkin(math.random(0, 1))
@@ -70,7 +70,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_FORMA_ATTACK_LEFT" or eventName == "AE_FORMA_ATTACK_RIGHT" then
 		self:MeleeAttackCode()

@@ -21,9 +21,9 @@ ENT.MeleeAttackDistance = 45 -- How close an enemy has to be to trigger a melee 
 ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 
 ENT.HasRangeAttack = true -- Can this NPC range attack?
-ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1 -- Range Attack Animations
+ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1
 ENT.RangeAttackEntityToSpawn = "obj_eye_fireball" -- The entity that is spawned when range attacking
-ENT.RangeDistance = 700 -- This is how far away it can shoot
+ENT.RangeDistance = 700 -- How far can it range attack?
 ENT.RangeToMeleeDistance = 200 -- How close does it have to be until it uses melee?
 ENT.TimeUntilRangeAttackProjectileRelease = false -- How much time until the projectile code is ran?
 ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
@@ -32,7 +32,7 @@ ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attac
 ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
@@ -52,14 +52,14 @@ ENT.SoundTbl_RangeAttack = "vj_base/ambience/fireball_throw.wav"
 ENT.SoundTbl_Pain = {"vj_eye/manduco/pain1.wav","vj_eye/manduco/pain2.wav"}
 ENT.SoundTbl_Death = {"vj_eye/manduco/die1.wav","vj_eye/manduco/die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(18, 18, 65), Vector(-18, -18, 0))
 	self:SetSkin(math.random(0, 2))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local getEventName = util.GetAnimEventNameByID
 --
-function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_MANDUCO_ATTACK_LEFT" or eventName == "AE_MANDUCO_ATTACK_RIGHT" then
 		self:MeleeAttackCode()
