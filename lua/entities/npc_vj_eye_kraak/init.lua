@@ -54,7 +54,7 @@ function ENT:OnFootstepSound(moveType, sdFile)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAlert(ent)
-	if self.VJ_IsBeingControlled == true then return end
+	if self.VJ_IsBeingControlled then return end
 	if math.random(1, 2) == 1 then
 		self.SoundTbl_Alert = sdAlertAngry
 		self:PlayAnim(ACT_ARM, true, false, true)
