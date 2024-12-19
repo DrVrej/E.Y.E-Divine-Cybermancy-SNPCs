@@ -24,27 +24,17 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 if !SERVER then return end
 
-ENT.Model = "models/dav0r/hoverball.mdl" -- The models it should spawn with | Picks a random one from the table
-ENT.DoesRadiusDamage = true -- Should it do a blast damage when it hits something?
-ENT.RadiusDamageRadius = 110 -- How far the damage go? The farther away it's from its enemy, the less damage it will do | Counted in world units
-ENT.RadiusDamage = 25 -- How much damage should it deal? Remember this is a radius damage, therefore it will do less damage the farther away the entity is from its enemy
-ENT.RadiusDamageUseRealisticRadius = true -- Should the damage decrease the farther away the enemy is from the position that the projectile hit?
-ENT.RadiusDamageType = DMG_BLAST -- Damage type
-ENT.RadiusDamageForce = 80 -- Put the force amount it should apply | false = Don't apply any force
-ENT.ShakeWorldOnDeath = true -- Should the world shake when the projectile hits something?
-ENT.ShakeWorldOnDeathAmplitude = 16 -- How much the screen will shake | From 1 to 16, 1 = really low 16 = really high
-ENT.ShakeWorldOnDeathRadius = 800 -- How far the screen shake goes, in world units
-ENT.ShakeWorldOnDeathFrequency = 200 -- The frequency
-ENT.DecalTbl_DeathDecals = {"Scorch"}
+ENT.Model = "models/dav0r/hoverball.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.ProjectileType = VJ.PROJ_TYPE_GRAVITY
+ENT.DoesRadiusDamage = true -- Should it deal radius damage when it collides with something?
+ENT.RadiusDamageRadius = 110
+ENT.RadiusDamage = 25
+ENT.RadiusDamageUseRealisticRadius = true -- Should the damage decrease the farther away the hit entity is from the radius origin?
+ENT.RadiusDamageType = DMG_BLAST
+ENT.RadiusDamageForce = 80 -- Damage force to apply to the hit entity | false = Don't apply any force
+ENT.CollisionDecals = "Scorch"
 ENT.SoundTbl_Idle = "ambient/fire/fire_small_loop1.wav"
 ENT.SoundTbl_OnCollide = "vj_base/ambience/fireball_explode.wav"
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomPhysicsObjectOnInitialize(phys)
-	phys:Wake()
-	phys:SetMass(2)
-	phys:EnableDrag(false)
-	phys:SetBuoyancyRatio(0)
-end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetMaterial("models/effect/vol_light001")
@@ -86,7 +76,9 @@ function ENT:Init()
 	self:DeleteOnRemove(dynLight)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:DeathEffects(data,phys)
+function ENT:OnDestroy(data, phys)
+	util.ScreenShake(data.HitPos, 16, 200, 1, 800)
+	
 	local effectData = EffectData()
 	effectData:SetOrigin(data.HitPos)
 	//effectData:SetScale(10)
