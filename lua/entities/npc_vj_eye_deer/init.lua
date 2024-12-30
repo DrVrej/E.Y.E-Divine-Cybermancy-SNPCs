@@ -8,5 +8,5 @@ include("shared.lua")
 -----------------------------------------------*/
 ENT.Model = "models/vj_eye/deer.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
 ENT.StartHealth = 100
-ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_RED -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.MeleeAttackBleedEnemy = false -- Should the player bleed when attacked by melee

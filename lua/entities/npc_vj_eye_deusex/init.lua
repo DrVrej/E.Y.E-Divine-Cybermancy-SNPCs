@@ -11,8 +11,7 @@ ENT.HullType = HULL_LARGE
 ENT.VJTag_ID_Boss = true
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
-ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
-ENT.Immune_Physics = true -- If set to true, the SNPC won't take damage from props
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
@@ -66,6 +65,7 @@ ENT.DeathSoundLevel = 95
 ENT.RangeAttackPitch = VJ.SET(100, 100)
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
+	self:SetPhysicsDamageScale(0)
 	self:SetCollisionBounds(Vector(90, 90, 420), Vector(-90, -90, 0))
 	self:SetStepHeight(150)
 end
