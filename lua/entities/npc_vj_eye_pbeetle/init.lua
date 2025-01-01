@@ -11,7 +11,7 @@ ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
-ENT.GibOnDeathDamagesTable = {"All"} -- Damages that it gibs from | "UseDefault" = Uses default damage types | "All" = Gib from any damage
+ENT.GibOnDeathFilter = false
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = "vj_eye/animals/bug_idle.wav"
 ENT.SoundTbl_Alert = "vj_eye/animals/bug_fear.wav"
@@ -24,7 +24,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local colorYellow = VJ.Color2Byte(Color(255, 221, 35))
 --
-function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
+function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	if self.HasGibOnDeathEffects then
 		local effectData = EffectData()
 		effectData:SetOrigin(self:GetPos() + self:OBBCenter())
