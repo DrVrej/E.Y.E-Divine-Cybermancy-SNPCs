@@ -42,7 +42,7 @@ function ENT:Init()
 
 	//ParticleEffectAttach("smoke_burning_engine_01", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	//ParticleEffectAttach("fire_jet_01_flame", PATTACH_ABSORIGIN_FOLLOW, self, 0)
-	ParticleEffectAttach("vj_eye_fireball", PATTACH_ABSORIGIN_FOLLOW, self, 0)
+	ParticleEffectAttach("vj_fireball_idle", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 
 	//local spriteGlow = ents.Create("env_sprite")
 	//spriteGlow:SetKeyValue("rendercolor","255 128 0")

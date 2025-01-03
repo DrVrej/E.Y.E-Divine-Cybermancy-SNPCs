@@ -27,11 +27,6 @@ if VJExists == true then
 	VJ.AddNPC("Turtle Egg", "sent_vj_eye_turtleegg", spawnCategory)
 	VJ.AddNPC("Random Animal", "sent_vj_eye_randanimal", spawnCategory)
 
-	-- Particles --
-	VJ.AddParticle("particles/vj_eye_fireball.pcf", {
-		"vj_eye_fireball"
-	})
-
 -- !!!!!! DON'T TOUCH ANYTHING BELOW THIS !!!!!! -------------------------------------------------------------------------------------------------------------------------
 	AddCSLuaFile()
 	VJ.AddAddonProperty(AddonName, AddonType)

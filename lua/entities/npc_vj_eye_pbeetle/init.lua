@@ -37,7 +37,7 @@ function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 		util.Effect("bloodspray", effectData)
 		util.Effect("bloodspray", effectData)
 		
-		ParticleEffect("antlion_gib_02_blood", self:GetPos(), self:GetAngles())
+		ParticleEffect("vj_acid_impact3_splat", self:GetPos(), self:GetAngles())
 	end
 	
 	self:CreateGibEntity("obj_vj_gib", "UseAlien_Big", {Pos = self:LocalToWorld(Vector(-5, 0, 10)), Vel = Vector(0, math.Rand(-100, 100), 0)})
