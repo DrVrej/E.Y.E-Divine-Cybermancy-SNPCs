@@ -6,7 +6,7 @@
 AddCSLuaFile()
 
 ENT.Type 			= "anim"
-ENT.Base 			= "obj_vj_tank_shell"
+ENT.Base 			= "obj_vj_rocket"
 ENT.PrintName		= "Deus Ex Rocket"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
