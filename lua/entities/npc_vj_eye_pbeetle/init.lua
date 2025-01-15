@@ -10,7 +10,7 @@ ENT.StartHealth = 10
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
-ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW -- The blood type, this will determine what it should use (decal, particle, etc.)
+ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 ENT.GibOnDeathFilter = false
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = "vj_eye/animals/bug_idle.wav"
