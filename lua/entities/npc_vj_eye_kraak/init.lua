@@ -19,7 +19,7 @@ ENT.MeleeAttackDistance = 95 -- How close an enemy has to be to trigger a melee 
 ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
+ENT.DisableFootStepSoundTimer = true
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav","vj_eye/kraak/tank_walk02.wav","vj_eye/kraak/tank_walk03.wav","vj_eye/kraak/tank_walk04.wav","vj_eye/kraak/tank_walk05.wav","vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/kraak/kranagull_idle_1.wav","vj_eye/kraak/kranagull_idle_2.wav"}
@@ -45,7 +45,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_KRAAK_ATTACK_LEFT" or eventName == "AE_KRAAK_ATTACK_RIGHT" then
 		self:MeleeAttackCode()
 	elseif ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

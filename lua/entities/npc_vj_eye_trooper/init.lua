@@ -9,7 +9,7 @@ ENT.Model = "models/vj_eye/troopers.mdl" -- Model(s) to spawn with | Picks a ran
 ENT.StartHealth = 200
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_FEDERALISTS"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_FEDERALISTS"}
 ENT.BloodColor = VJ.BLOOD_COLOR_OIL
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
@@ -55,6 +55,6 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_TROOPERS_ATTACK_LEFT" or eventName == "AE_TROOPERS_ATTACK_RIGHT" then
 		self:MeleeAttackCode()
 	//elseif eventName == "AE_TROOPERS_GALLOP_LEFT" or eventName == "AE_TROOPERS_GALLOP_RIGHT" then -- For some reason only running animation has it...
-		//self:FootStepSoundCode()
+		//self:PlayFootstepSound()
 	end
 end

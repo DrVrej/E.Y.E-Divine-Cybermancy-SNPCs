@@ -36,7 +36,7 @@ ENT.TimeUntilLeapAttackVelocity = 0.6 -- How much time until it runs the velocit
 ENT.LeapAttackDamage = 25
 ENT.LeapAttackDamageDistance = 150 -- How far does the damage go?
 
-ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
+ENT.DisableFootStepSoundTimer = true
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.AnimTbl_Flinch = ACT_BIG_FLINCH -- The regular flinch animations to play
@@ -75,7 +75,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_FORMA_ATTACK_LEFT" or eventName == "AE_FORMA_ATTACK_RIGHT" then
 		self:MeleeAttackCode()
 	elseif eventName == "AE_FORMA_GALLOP_LEFT" or eventName == "AE_FORMA_GALLOP_RIGHT" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

@@ -63,7 +63,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if eventName == "AE_CARNO_ATTACK_RIGHT" or eventName == "AE_CARNO_ATTACK_LEFT" then
 		self:MeleeAttackCode()
 	//elseif eventName == "AE_CARNO_GALLOP_RIGHT" or eventName == "AE_CARNO_GALLOP_LEFT" then -- For some reason only running animation has it...
-		//self:FootStepSoundCode()
+		//self:PlayFootstepSound()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

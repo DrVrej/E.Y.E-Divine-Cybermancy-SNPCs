@@ -39,7 +39,7 @@ ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near unti
 ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
+ENT.DisableFootStepSoundTimer = true
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav","vj_eye/deusex/deus_idle_2.wav"}
@@ -72,7 +72,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	if ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

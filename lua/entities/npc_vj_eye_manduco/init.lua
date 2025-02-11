@@ -29,7 +29,7 @@ ENT.TimeUntilRangeAttackProjectileRelease = false -- How much time until the pro
 ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
 
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.DisableFootStepSoundTimer = true -- If set to true, it will disable the time system for the footstep sound code, allowing you to use other ways like model events
+ENT.DisableFootStepSoundTimer = true
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
@@ -66,7 +66,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	elseif eventName == "AE_MANDUCO_FIREBALL" then
 		self:RangeAttackCode()
 	elseif eventName == "AE_MANDUCO_GALLOP_LEFT" or eventName == "AE_MANDUCO_GALLOP_RIGHT" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
