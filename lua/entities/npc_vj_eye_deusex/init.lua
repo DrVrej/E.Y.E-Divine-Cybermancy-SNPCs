@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/deusex.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/deusex.mdl"
 ENT.StartHealth = 6000
 ENT.HullType = HULL_LARGE
 ENT.VJ_ID_Boss = true
@@ -13,34 +13,33 @@ ENT.VJ_ID_Boss = true
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB) -- Type of Damage
-ENT.MeleeAttackDistance = 200 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 230 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = 0.62 -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDamageType = bit.bor(DMG_CRUSH, DMG_ALWAYSGIB)
+ENT.MeleeAttackDistance = 200
+ENT.MeleeAttackDamageDistance = 230
+ENT.TimeUntilMeleeAttackDamage = 0.62
 ENT.MeleeAttackDamage = 75
-ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
+ENT.HasMeleeAttackKnockBack = true
 
-ENT.HasRangeAttack = true -- Can this NPC range attack?
-ENT.DisableRangeAttackAnimation = true -- if true, it will disable the animation code
-ENT.RangeAttackAnimationStopMovement = false -- Should it stop moving when performing a range attack?
-ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket" -- The entity that is spawned when range attacking
-ENT.RangeDistance = 8000 -- How far can it range attack?
-ENT.RangeToMeleeDistance = 500 -- How close does it have to be until it uses melee?
-ENT.TimeUntilRangeAttackProjectileRelease = 0.4 -- How much time until the projectile code is ran?
-ENT.NextRangeAttackTime = 5 -- How much time until it can use a range attack?
-ENT.NextAnyAttackTime_Range = 3 -- How much time until it can use a range attack?
-ENT.RangeAttackReps = 7 -- How many times does it run the projectile code?
+ENT.HasRangeAttack = true
+ENT.DisableRangeAttackAnimation = true
+ENT.RangeAttackAnimationStopMovement = false
+ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket"
+ENT.RangeDistance = 8000
+ENT.RangeToMeleeDistance = 500
+ENT.TimeUntilRangeAttackProjectileRelease = 0.4
+ENT.NextRangeAttackTime = 5
+ENT.NextAnyAttackTime_Range = 3
+ENT.RangeAttackReps = 7
 
-ENT.NoChaseAfterCertainRange = true -- Should the NPC stop chasing when the enemy is within the given far and close distances?
-ENT.NoChaseAfterCertainRange_FarDistance = 4000 -- How far until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
-ENT.NoChaseAfterCertainRange_CloseDistance = "UseRangeDistance" -- How near until it can chase again? | "UseRangeDistance" = Use the number provided by the range attack instead
-ENT.NoChaseAfterCertainRange_Type = "OnlyRange" -- "Regular" = Default behavior | "OnlyRange" = Only does it if it's able to range attack
+ENT.LimitChaseDistance = "OnlyRange"
+ENT.LimitChaseDistance_Max = 4000
+ENT.LimitChaseDistance_Min = "UseRangeDistance"
 
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
+ENT.HasExtraMeleeAttackSounds = true
 ENT.DisableFootStepSoundTimer = true
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav","vj_eye/deusex/deus_idle_2.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/deusex/deus_scream_1.wav","vj_eye/deusex/deus_scream_2.wav"}

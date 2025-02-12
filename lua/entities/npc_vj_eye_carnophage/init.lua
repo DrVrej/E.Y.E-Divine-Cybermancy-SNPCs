@@ -5,31 +5,31 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/carnophage.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/carnophage.mdl"
 ENT.StartHealth = 200
 ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = "vjseq_melee"
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 18
-ENT.MeleeAttackDistance = 55 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
-ENT.MeleeAttackBleedEnemyChance = 1 -- How chance there is that the play will bleed? | 1 = always
-ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
-ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
-ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
+ENT.MeleeAttackDistance = 55
+ENT.MeleeAttackDamageDistance = 85
+ENT.MeleeAttackBleedEnemy = true
+ENT.MeleeAttackBleedEnemyChance = 1
+ENT.MeleeAttackBleedEnemyDamage = 1
+ENT.MeleeAttackBleedEnemyTime = 1
+ENT.MeleeAttackBleedEnemyReps = 4
 
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-ENT.FootStepTimeRun = 0.4 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.5 -- Delay between footstep sounds while it is walking | false = Disable while walking
-	-- ====== Flinching Code ====== --
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
+ENT.HasExtraMeleeAttackSounds = true
+ENT.FootStepTimeRun = 0.4
+ENT.FootStepTimeWalk = 0.5
+
+ENT.CanFlinch = 1
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
@@ -39,7 +39,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3","vj_eye/carnophage/carnofoot2.mp3"}
 ENT.SoundTbl_Idle = {"vj_eye/carnophage/idle1.wav","vj_eye/carnophage/idle2.wav","vj_eye/carnophage/idle3.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/carnophage/alert1.wav","vj_eye/carnophage/alert3.wav"}
@@ -61,7 +61,7 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_CARNO_ATTACK_RIGHT" or eventName == "AE_CARNO_ATTACK_LEFT" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	//elseif eventName == "AE_CARNO_GALLOP_RIGHT" or eventName == "AE_CARNO_GALLOP_LEFT" then -- For some reason only running animation has it...
 		//self:PlayFootstepSound()
 	end

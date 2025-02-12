@@ -5,22 +5,22 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/kraak.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/kraak.mdl"
 ENT.StartHealth = 600
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.TimeUntilMeleeAttackDamage = false
-ENT.MeleeAttackDistance = 95 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDistance = 95
+ENT.MeleeAttackDamageDistance = 100
 
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
+ENT.HasExtraMeleeAttackSounds = true
 ENT.DisableFootStepSoundTimer = true
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav","vj_eye/kraak/tank_walk02.wav","vj_eye/kraak/tank_walk03.wav","vj_eye/kraak/tank_walk04.wav","vj_eye/kraak/tank_walk05.wav","vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/kraak/kranagull_idle_1.wav","vj_eye/kraak/kranagull_idle_2.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/kraak/kranagull_scream_3.wav"}
@@ -43,7 +43,7 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_KRAAK_ATTACK_LEFT" or eventName == "AE_KRAAK_ATTACK_RIGHT" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif ev == 2050 or ev == 2051 then -- Predefined by the engine, so IDs are always the same
 		self:PlayFootstepSound()
 	end

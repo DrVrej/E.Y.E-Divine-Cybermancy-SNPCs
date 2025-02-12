@@ -19,14 +19,14 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 if !SERVER then return end
 
-ENT.Model = "models/dav0r/hoverball.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/dav0r/hoverball.mdl"
 ENT.ProjectileType = VJ.PROJ_TYPE_GRAVITY
-ENT.DoesRadiusDamage = true -- Should it deal radius damage when it collides with something?
+ENT.DoesRadiusDamage = true
 ENT.RadiusDamageRadius = 110
 ENT.RadiusDamage = 25
-ENT.RadiusDamageUseRealisticRadius = true -- Should the damage decrease the farther away the hit entity is from the radius origin?
+ENT.RadiusDamageUseRealisticRadius = true
 ENT.RadiusDamageType = DMG_BLAST
-ENT.RadiusDamageForce = 80 -- Damage force to apply to the hit entity | false = Don't apply any force
+ENT.RadiusDamageForce = 80
 ENT.CollisionDecal = "Scorch"
 ENT.SoundTbl_Idle = "ambient/fire/fire_small_loop1.wav"
 ENT.SoundTbl_OnCollide = "vj_base/ambience/fireball_explode.wav"

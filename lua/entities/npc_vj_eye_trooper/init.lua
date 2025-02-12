@@ -5,25 +5,25 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/troopers.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/troopers.mdl"
 ENT.StartHealth = 200
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_FEDERALISTS"}
 ENT.BloodColor = VJ.BLOOD_COLOR_OIL
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1, "melee2"}
 ENT.TimeUntilMeleeAttackDamage = false
-ENT.MeleeAttackDistance = 40 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 100 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDistance = 40
+ENT.MeleeAttackDamageDistance = 100
 
-ENT.FootStepTimeRun = 0.3 -- Delay between footstep sounds while it is running | false = Disable while running
-ENT.FootStepTimeWalk = 0.5 -- Delay between footstep sounds while it is walking | false = Disable while walking
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Flinching Code ====== --
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
+ENT.FootStepTimeRun = 0.3
+ENT.FootStepTimeWalk = 0.5
+ENT.HasExtraMeleeAttackSounds = true
+
+ENT.CanFlinch = 1
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
@@ -33,7 +33,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = "physics/plaster/ceiling_tile_step4.wav"
 ENT.SoundTbl_Idle = {"vj_eye/trooper/pass_temple_activate.wav","vj_eye/trooper/scream.wav"}
 //ENT.SoundTbl_CombatIdle = "vj_eye/trooper/alarm.wav" -- Avoid using, its a looping wav file!
@@ -53,7 +53,7 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_TROOPERS_ATTACK_LEFT" or eventName == "AE_TROOPERS_ATTACK_RIGHT" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	//elseif eventName == "AE_TROOPERS_GALLOP_LEFT" or eventName == "AE_TROOPERS_GALLOP_RIGHT" then -- For some reason only running animation has it...
 		//self:PlayFootstepSound()
 	end

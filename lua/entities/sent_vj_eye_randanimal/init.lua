@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted, 
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.SingleSpawner = true -- If set to true, it will spawn the entities once then remove itself
+ENT.SingleSpawner = true
 ENT.EntitiesToSpawn = {
 	{Entities = {"npc_vj_eye_pbeetle", "npc_vj_eye_rat", "npc_vj_eye_turtle"}},
 }

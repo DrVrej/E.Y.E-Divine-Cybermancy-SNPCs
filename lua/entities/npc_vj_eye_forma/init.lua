@@ -5,41 +5,41 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/forma.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/forma.mdl"
 ENT.StartHealth = 120
 ENT.HullType = HULL_MEDIUM
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_METASTREUMONIC"}
 ENT.BloodColor = VJ.BLOOD_COLOR_YELLOW
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDistance = 45 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDistance = 45
+ENT.MeleeAttackDamageDistance = 85
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 18
-ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
-ENT.MeleeAttackBleedEnemyChance = 1 -- How chance there is that the play will bleed? | 1 = always
-ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
-ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
-ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
+ENT.MeleeAttackBleedEnemy = true
+ENT.MeleeAttackBleedEnemyChance = 1
+ENT.MeleeAttackBleedEnemyDamage = 1
+ENT.MeleeAttackBleedEnemyTime = 1
+ENT.MeleeAttackBleedEnemyReps = 4
 
-ENT.HasLeapAttack = true -- Can this NPC leap attack?
+ENT.HasLeapAttack = true
 ENT.AnimTbl_LeapAttack = ACT_RANGE_ATTACK1
-ENT.LeapDistance = 400 -- The max distance that the NPC can leap from
-ENT.LeapToMeleeDistance = 200 -- How close does it have to be until it uses melee?
-ENT.TimeUntilLeapAttackDamage = 0.65 -- How much time until it runs the leap damage code?
-ENT.NextLeapAttackTime = 3 -- How much time until it can use a leap attack?
-ENT.LeapAttackExtraTimers = {0.8, 1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
-ENT.NextAnyAttackTime_Leap = 0.8 -- How much time until it can use any attack again? | Counted in Seconds
-ENT.TimeUntilLeapAttackVelocity = 0.6 -- How much time until it runs the velocity code?
+ENT.LeapDistance = 400
+ENT.LeapToMeleeDistance = 200
+ENT.TimeUntilLeapAttackDamage = 0.65
+ENT.NextLeapAttackTime = 3
+ENT.LeapAttackExtraTimers = {0.8, 1}
+ENT.NextAnyAttackTime_Leap = 0.8
+ENT.TimeUntilLeapAttackVelocity = 0.6
 ENT.LeapAttackDamage = 25
-ENT.LeapAttackDamageDistance = 150 -- How far does the damage go?
+ENT.LeapAttackDamageDistance = 150
 
 ENT.DisableFootStepSoundTimer = true
-	-- ====== Flinching Code ====== --
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_BIG_FLINCH -- The regular flinch animations to play
+
+ENT.CanFlinch = 1
+ENT.AnimTbl_Flinch = ACT_BIG_FLINCH
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
@@ -49,7 +49,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"vj_eye/forma/foot1.wav","vj_eye/forma/foot2.wav","vj_eye/forma/foot3.wav","vj_eye/forma/foot4.wav"}
 //ENT.SoundTbl_Breath = {"vj_eye/forma/breathe_loop1.wav"}
 ENT.SoundTbl_Idle = {"vj_eye/forma/idle1.wav","vj_eye/forma/idle2.wav","vj_eye/forma/idle3.wav","vj_eye/forma/breathe_loop1.wav"}
@@ -73,7 +73,7 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_FORMA_ATTACK_LEFT" or eventName == "AE_FORMA_ATTACK_RIGHT" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif eventName == "AE_FORMA_GALLOP_LEFT" or eventName == "AE_FORMA_GALLOP_RIGHT" then
 		self:PlayFootstepSound()
 	end

@@ -5,13 +5,13 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_eye/limacue.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_eye/limacue.mdl"
 ENT.StartHealth = 10
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE -- Doesn't attack anything
+ENT.Behavior = VJ_BEHAVIOR_PASSIVE_NATURE
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_Idle = {"vj_eye/animals/limacue_idle.wav", "vj_eye/animals/limacue_idle2.wav"}
 ENT.SoundTbl_Alert = "vj_eye/animals/limacue_fear.wav"
 ENT.SoundTbl_Pain = "vj_eye/animals/limacue_fear.wav"
