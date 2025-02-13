@@ -23,7 +23,7 @@ ENT.MeleeAttackDamage = 75
 ENT.HasMeleeAttackKnockBack = true
 
 ENT.HasRangeAttack = true
-ENT.DisableRangeAttackAnimation = true
+ENT.AnimTbl_RangeAttack = false
 ENT.RangeAttackAnimationStopMovement = false
 ENT.RangeAttackEntityToSpawn = "obj_eye_deusex_rocket"
 ENT.RangeDistance = 8000

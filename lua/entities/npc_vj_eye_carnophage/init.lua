@@ -20,15 +20,12 @@ ENT.MeleeAttackDistance = 55
 ENT.MeleeAttackDamageDistance = 85
 ENT.MeleeAttackBleedEnemy = true
 ENT.MeleeAttackBleedEnemyChance = 1
-ENT.MeleeAttackBleedEnemyDamage = 1
-ENT.MeleeAttackBleedEnemyTime = 1
-ENT.MeleeAttackBleedEnemyReps = 4
 
 ENT.HasExtraMeleeAttackSounds = true
 ENT.FootStepTimeRun = 0.4
 ENT.FootStepTimeWalk = 0.5
 
-ENT.CanFlinch = 1
+ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
@@ -86,7 +83,7 @@ function ENT:CustomOnMeleeAttack_BeforeStartTimer(seed)
 		self.MeleeAttackExtraTimers = {}
 		self.MeleeAttackDamage = 30
 	else
-		self.AnimTbl_MeleeAttack = {"vjseq_melee"}
+		self.AnimTbl_MeleeAttack = "vjseq_melee"
 		self.TimeUntilMeleeAttackDamage = 0.32
 		self.MeleeAttackExtraTimers = {0.6}
 		self.MeleeAttackDamage = 18
