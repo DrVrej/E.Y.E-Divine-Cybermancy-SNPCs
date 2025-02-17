@@ -23,8 +23,8 @@ ENT.MeleeAttackBleedEnemyChance = 1
 
 ENT.HasLeapAttack = true
 ENT.AnimTbl_LeapAttack = ACT_RANGE_ATTACK1
-ENT.LeapDistance = 400
-ENT.LeapToMeleeDistance = 200
+ENT.LeapAttackMaxDistance = 400
+ENT.LeapAttackMinDistance = 200
 ENT.TimeUntilLeapAttackDamage = 0.65
 ENT.NextLeapAttackTime = 3
 ENT.LeapAttackExtraTimers = {0.8, 1}
@@ -37,7 +37,7 @@ ENT.DisableFootStepSoundTimer = true
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_BIG_FLINCH
-ENT.HitGroupFlinching_Values = {
+ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
 	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},

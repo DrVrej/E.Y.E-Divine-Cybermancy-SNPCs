@@ -18,13 +18,13 @@ ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDistance = 40
 ENT.MeleeAttackDamageDistance = 100
 
-ENT.FootStepTimeRun = 0.3
-ENT.FootStepTimeWalk = 0.5
+ENT.FootstepTimerRun = 0.3
+ENT.FootstepTimerWalk = 0.5
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
-ENT.HitGroupFlinching_Values = {
+ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
 	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},

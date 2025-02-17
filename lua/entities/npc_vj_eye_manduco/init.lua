@@ -22,9 +22,9 @@ ENT.MeleeAttackDamageDistance = 65
 
 ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = ACT_RANGE_ATTACK1
-ENT.RangeAttackEntityToSpawn = "obj_eye_fireball"
-ENT.RangeDistance = 700
-ENT.RangeToMeleeDistance = 200
+ENT.RangeAttackProjectiles = "obj_eye_fireball"
+ENT.RangeAttackMaxDistance = 700
+ENT.RangeAttackMinDistance = 200
 ENT.TimeUntilRangeAttackProjectileRelease = false
 ENT.NextRangeAttackTime = 5
 
@@ -33,7 +33,7 @@ ENT.DisableFootStepSoundTimer = true
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
-ENT.HitGroupFlinching_Values = {
+ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
 	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},
