@@ -90,12 +90,11 @@ function ENT:MeleeAttackKnockbackVelocity(hitEnt)
 	return self:GetForward()*math.random(580, 620) + self:GetUp()*math.random(580, 610)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjSpawnPos(projectile)
+function ENT:RangeAttackProjPos(projectile)
 	self:RestartGesture(ACT_GESTURE_RANGE_ATTACK1)
 	return self:GetAttachment(self:LookupAttachment("missile")).Pos + self:GetForward()*50 + self:GetUp()*-35
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjVelocity(projectile)
-	local projPos = projectile:GetPos()
-	return self:CalculateProjectile("Line", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 5000), 5000)
+function ENT:RangeAttackProjVel(projectile)
+	return VJ.CalculateTrajectory(self, self:GetEnemy(), "Line", projectile:GetPos(), 1, 5000)
 end

@@ -70,11 +70,10 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjSpawnPos(projectile)
+function ENT:RangeAttackProjPos(projectile)
 	return self:GetAttachment(self:LookupAttachment("fireball")).Pos
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:RangeAttackProjVelocity(projectile)
-	local projPos = projectile:GetPos()
-	return self:CalculateProjectile("Curve", projPos, self:GetAimPosition(self:GetEnemy(), projPos, 1, 700), 700)
+function ENT:RangeAttackProjVel(projectile)
+	return VJ.CalculateTrajectory(self, self:GetEnemy(), "Curve", projectile:GetPos(), 1, 50)
 end
