@@ -3,7 +3,6 @@ ENT.Type 			= "anim"
 ENT.PrintName		= "Turtle Egg"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
-ENT.Information		= "Spawn it and fight with it!"
 ENT.Category		= "E.Y.E Divine Cybermancy"
 
 ENT.Spawnable		= false

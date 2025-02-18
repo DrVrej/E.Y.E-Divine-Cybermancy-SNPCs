@@ -18,8 +18,8 @@ ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDistance = 40
 ENT.MeleeAttackDamageDistance = 100
 
-ENT.FootstepTimerRun = 0.3
-ENT.FootstepTimerWalk = 0.5
+ENT.FootstepSoundTimerRun = 0.3
+ENT.FootstepSoundTimerWalk = 0.5
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.CanFlinch = true

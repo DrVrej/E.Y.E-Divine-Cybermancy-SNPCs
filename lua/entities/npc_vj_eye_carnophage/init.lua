@@ -22,8 +22,8 @@ ENT.MeleeAttackBleedEnemy = true
 ENT.MeleeAttackBleedEnemyChance = 1
 
 ENT.HasExtraMeleeAttackSounds = true
-ENT.FootstepTimerRun = 0.4
-ENT.FootstepTimerWalk = 0.5
+ENT.FootstepSoundTimerRun = 0.4
+ENT.FootstepSoundTimerWalk = 0.5
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
