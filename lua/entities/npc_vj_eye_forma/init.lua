@@ -87,7 +87,8 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:GetLeapAttackVelocity()
-	local ene = self:GetEnemy()
-	return ((ene:GetPos() + ene:OBBCenter()) - (self:GetPos() + self:OBBCenter())):GetNormal() * 400 + self:GetForward() * 250 + self:GetUp() * 220
+function ENT:OnLeapAttack(status, enemy)
+	if status == "Jump" then
+		return ((enemy:GetPos() + enemy:OBBCenter()) - (self:GetPos() + self:OBBCenter())):GetNormal() * 400 + self:GetForward() * 250 + self:GetUp() * 220
+	end
 end
