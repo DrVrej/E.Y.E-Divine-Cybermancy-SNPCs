@@ -8,6 +8,8 @@ ENT.Category		= "E.Y.E Divine Cybermancy"
 ENT.Spawnable		= false
 ENT.AdminSpawnable	= false
 ENT.AutomaticFrameAdvance = true
+
+//ENT.PhysicsSounds = true
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:SetAutomaticFrameAdvance( bUsingAnim )
 	self.AutomaticFrameAdvance = bUsingAnim
