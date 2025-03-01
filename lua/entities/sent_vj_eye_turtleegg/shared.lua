@@ -4,9 +4,6 @@ ENT.PrintName		= "Turtle Egg"
 ENT.Author 			= "DrVrej"
 ENT.Contact 		= "http://steamcommunity.com/groups/vrejgaming"
 ENT.Category		= "E.Y.E Divine Cybermancy"
-
-ENT.Spawnable		= false
-ENT.AdminSpawnable	= false
 ENT.AutomaticFrameAdvance = true
 
 //ENT.PhysicsSounds = true
