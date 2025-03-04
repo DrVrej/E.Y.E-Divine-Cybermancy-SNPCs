@@ -24,7 +24,6 @@ ENT.HasMeleeAttackKnockBack = true
 
 ENT.HasRangeAttack = true
 ENT.AnimTbl_RangeAttack = false
-ENT.RangeAttackAnimationStopMovement = false
 ENT.RangeAttackProjectiles = "obj_eye_deusex_rocket"
 ENT.RangeAttackMaxDistance = 8000
 ENT.RangeAttackMinDistance = 500
