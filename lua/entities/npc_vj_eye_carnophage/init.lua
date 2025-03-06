@@ -76,16 +76,18 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 /*
 -- Why not use the other 2 attacks? Because this 1 attack is extremely dangerous & fast, while the others are too slow compared to it
-function ENT:CustomOnMeleeAttack_BeforeStartTimer(seed)
-	if math.random(1, 2) == 1 then
-		self.AnimTbl_MeleeAttack = {"vjseq_melee2", "vjseq_melee3"}
-		self.TimeUntilMeleeAttackDamage = 0.4
-		self.MeleeAttackExtraTimers = {}
-		self.MeleeAttackDamage = 30
-	else
-		self.AnimTbl_MeleeAttack = "vjseq_melee"
-		self.TimeUntilMeleeAttackDamage = 0.32
-		self.MeleeAttackExtraTimers = {0.6}
-		self.MeleeAttackDamage = 18
+function ENT:OnMeleeAttack(status, enemy)
+	if status == "Init" then
+		if math.random(1, 2) == 1 then
+			self.AnimTbl_MeleeAttack = {"vjseq_melee2", "vjseq_melee3"}
+			self.TimeUntilMeleeAttackDamage = 0.4
+			self.MeleeAttackExtraTimers = {}
+			self.MeleeAttackDamage = 30
+		else
+			self.AnimTbl_MeleeAttack = "vjseq_melee"
+			self.TimeUntilMeleeAttackDamage = 0.32
+			self.MeleeAttackExtraTimers = {0.6}
+			self.MeleeAttackDamage = 18
+		end
 	end
 end*/
