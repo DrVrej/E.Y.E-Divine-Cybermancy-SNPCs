@@ -21,14 +21,14 @@ ENT.MeleeAttackDamageDistance = 100
 ENT.HasExtraMeleeAttackSounds = true
 ENT.DisableFootStepSoundTimer = true
 
-ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav","vj_eye/kraak/tank_walk02.wav","vj_eye/kraak/tank_walk03.wav","vj_eye/kraak/tank_walk04.wav","vj_eye/kraak/tank_walk05.wav","vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
-ENT.SoundTbl_Idle = {"vj_eye/kraak/kranagull_idle_1.wav","vj_eye/kraak/kranagull_idle_2.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/kraak/tank_walk01.wav", "vj_eye/kraak/tank_walk02.wav", "vj_eye/kraak/tank_walk03.wav", "vj_eye/kraak/tank_walk04.wav", "vj_eye/kraak/tank_walk05.wav", "vj_eye/kraak/tank_walk06.wav"} //"physics/plaster/ceiling_tile_step4.wav"
+ENT.SoundTbl_Idle = {"vj_eye/kraak/kranagull_idle_1.wav", "vj_eye/kraak/kranagull_idle_2.wav"}
 ENT.SoundTbl_Alert = {"vj_eye/kraak/kranagull_scream_3.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_eye/kraak/kranagull_scream_5.wav","vj_eye/kraak/kranagull_scream_9.wav","vj_eye/kraak/kranagull_scream_10.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/kraak/kranagull_scream_5.wav", "vj_eye/kraak/kranagull_scream_9.wav", "vj_eye/kraak/kranagull_scream_10.wav"}
 ENT.SoundTbl_MeleeAttackExtra = "VJ.Impact.Metal_Crush"
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav", "vj_eye/swipe02.wav", "vj_eye/swipe03.wav"}
 ENT.SoundTbl_Pain = {"vj_eye/kraak/kranagull_scream_6.wav"}
-ENT.SoundTbl_Death = {"vj_eye/kraak/kranagull_scream_7.wav","vj_eye/kraak/kranagull_scream_8.wav"}
+ENT.SoundTbl_Death = {"vj_eye/kraak/kranagull_scream_7.wav", "vj_eye/kraak/kranagull_scream_8.wav"}
 
 local sdAlertRegular = "vj_eye/kraak/kranagull_scream_4.wav"
 local sdAlertAngry = "vj_eye/kraak/kranagull_scream_3.wav"

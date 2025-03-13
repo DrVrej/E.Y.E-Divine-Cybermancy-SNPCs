@@ -43,14 +43,14 @@ ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
 
-ENT.SoundTbl_FootStep = {"vj_eye/manduco/walk1.wav","vj_eye/manduco/walk2.wav","vj_eye/manduco/walk3.wav","vj_eye/manduco/walk4.wav"}
-ENT.SoundTbl_Idle = {"vj_eye/manduco/idle.wav","vj_eye/manduco/idle2.wav","vj_eye/manduco/idle3.wav","vj_eye/manduco/gurgle.wav"}
-ENT.SoundTbl_Alert = {"vj_eye/manduco/alert1.wav","vj_eye/manduco/alert2.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_eye/manduco/leap1.wav","vj_eye/manduco/scream1.wav","vj_eye/manduco/breathe.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/manduco/walk1.wav", "vj_eye/manduco/walk2.wav", "vj_eye/manduco/walk3.wav", "vj_eye/manduco/walk4.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/manduco/idle.wav", "vj_eye/manduco/idle2.wav", "vj_eye/manduco/idle3.wav", "vj_eye/manduco/gurgle.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/manduco/alert1.wav", "vj_eye/manduco/alert2.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/manduco/leap1.wav", "vj_eye/manduco/scream1.wav", "vj_eye/manduco/breathe.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav", "vj_eye/swipe02.wav", "vj_eye/swipe03.wav"}
 ENT.SoundTbl_RangeAttack = "vj_base/ambience/fireball_throw.wav"
-ENT.SoundTbl_Pain = {"vj_eye/manduco/pain1.wav","vj_eye/manduco/pain2.wav"}
-ENT.SoundTbl_Death = {"vj_eye/manduco/die1.wav","vj_eye/manduco/die2.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/manduco/pain1.wav", "vj_eye/manduco/pain2.wav"}
+ENT.SoundTbl_Death = {"vj_eye/manduco/die1.wav", "vj_eye/manduco/die2.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetCollisionBounds(Vector(18, 18, 65), Vector(-18, -18, 0))

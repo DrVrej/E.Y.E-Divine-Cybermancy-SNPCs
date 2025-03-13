@@ -37,13 +37,13 @@ ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
 
-ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3","vj_eye/carnophage/carnofoot2.mp3"}
-ENT.SoundTbl_Idle = {"vj_eye/carnophage/idle1.wav","vj_eye/carnophage/idle2.wav","vj_eye/carnophage/idle3.wav"}
-ENT.SoundTbl_Alert = {"vj_eye/carnophage/alert1.wav","vj_eye/carnophage/alert3.wav"}
-ENT.SoundTbl_BeforeMeleeAttack = {"vj_eye/carnophage/leap1.wav","vj_eye/carnophage/leap2.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
-ENT.SoundTbl_Pain = {"vj_eye/carnophage/pain1.wav","vj_eye/carnophage/pain2.wav"}
-ENT.SoundTbl_Death = {"vj_eye/carnophage/scream.wav","vj_eye/carnophage/die2.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3", "vj_eye/carnophage/carnofoot2.mp3"}
+ENT.SoundTbl_Idle = {"vj_eye/carnophage/idle1.wav", "vj_eye/carnophage/idle2.wav", "vj_eye/carnophage/idle3.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/carnophage/alert1.wav", "vj_eye/carnophage/alert3.wav"}
+ENT.SoundTbl_BeforeMeleeAttack = {"vj_eye/carnophage/leap1.wav", "vj_eye/carnophage/leap2.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav", "vj_eye/swipe02.wav", "vj_eye/swipe03.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/carnophage/pain1.wav", "vj_eye/carnophage/pain2.wav"}
+ENT.SoundTbl_Death = {"vj_eye/carnophage/scream.wav", "vj_eye/carnophage/die2.wav"}
 
 local sdAlertRegular = {"vj_eye/carnophage/alert1.wav", "vj_eye/carnophage/alert3.wav"}
 local sdAlertAngry = {"vj_eye/carnophage/gurgle_loop1.wav"}

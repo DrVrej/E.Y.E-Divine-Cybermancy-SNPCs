@@ -35,13 +35,13 @@ ENT.FlinchHitGroupMap = {
 }
 
 ENT.SoundTbl_FootStep = "physics/plaster/ceiling_tile_step4.wav"
-ENT.SoundTbl_Idle = {"vj_eye/trooper/pass_temple_activate.wav","vj_eye/trooper/scream.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/trooper/pass_temple_activate.wav", "vj_eye/trooper/scream.wav"}
 //ENT.SoundTbl_CombatIdle = "vj_eye/trooper/alarm.wav" -- Avoid using, its a looping wav file!
 ENT.SoundTbl_Alert = "vj_eye/trooper/active.wav"
-ENT.SoundTbl_MeleeAttack = {"vj_eye/trooper/attack1.wav","vj_eye/trooper/attack2.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
-ENT.SoundTbl_Pain = {"vj_eye/trooper/pain1.wav","vj_eye/trooper/pain2.wav"}
-ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav","ambient/energy/spark2.wav","ambient/energy/spark3.wav","ambient/energy/spark4.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/trooper/attack1.wav", "vj_eye/trooper/attack2.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav", "vj_eye/swipe02.wav", "vj_eye/swipe03.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/trooper/pain1.wav", "vj_eye/trooper/pain2.wav"}
+ENT.SoundTbl_Impact = {"ambient/energy/spark1.wav", "ambient/energy/spark2.wav", "ambient/energy/spark3.wav", "ambient/energy/spark4.wav"}
 ENT.SoundTbl_Death = "vj_eye/trooper/die.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()

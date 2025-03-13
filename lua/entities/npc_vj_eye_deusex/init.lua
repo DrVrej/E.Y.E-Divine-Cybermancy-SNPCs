@@ -39,15 +39,15 @@ ENT.LimitChaseDistance_Min = "UseRangeDistance"
 ENT.HasExtraMeleeAttackSounds = true
 ENT.DisableFootStepSoundTimer = true
 
-ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav","vj_eye/deusex/deus_footstep_02_mono.wav"}
-ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav","vj_eye/deusex/deus_idle_2.wav"}
-ENT.SoundTbl_Alert = {"vj_eye/deusex/deus_scream_1.wav","vj_eye/deusex/deus_scream_2.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_eye/deusex/deus_scream_3.wav","vj_eye/deusex/deus_scream_4.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/deusex/deus_footstep_01_mono.wav", "vj_eye/deusex/deus_footstep_02_mono.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/deusex/deus_idle_1.wav", "vj_eye/deusex/deus_idle_2.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/deusex/deus_scream_1.wav", "vj_eye/deusex/deus_scream_2.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/deusex/deus_scream_3.wav", "vj_eye/deusex/deus_scream_4.wav"}
 ENT.SoundTbl_MeleeAttackExtra = "VJ.Impact.Metal_Crush"
-ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav","vj_eye/swipe02.wav","vj_eye/swipe03.wav"}
-ENT.SoundTbl_RangeAttack = {"vj_eye/deusex/deus_walk_01_mono.wav","vj_eye/deusex/deus_walk_02_mono.wav"}
-ENT.SoundTbl_Pain = {"vj_eye/deusex/deus_scream_5.wav","vj_eye/deusex/deus_scream_6.wav"}
-ENT.SoundTbl_Death = {"vj_eye/deusex/deus_scream_7.wav","vj_eye/deusex/deus_scream_8.wav","vj_eye/deusex/deus_scream_9.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_eye/swipe01.wav", "vj_eye/swipe02.wav", "vj_eye/swipe03.wav"}
+ENT.SoundTbl_RangeAttack = {"vj_eye/deusex/deus_walk_01_mono.wav", "vj_eye/deusex/deus_walk_02_mono.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/deusex/deus_scream_5.wav", "vj_eye/deusex/deus_scream_6.wav"}
+ENT.SoundTbl_Death = {"vj_eye/deusex/deus_scream_7.wav", "vj_eye/deusex/deus_scream_8.wav", "vj_eye/deusex/deus_scream_9.wav"}
 
 ENT.FootstepSoundLevel = 80
 ENT.AlertSoundLevel = 95

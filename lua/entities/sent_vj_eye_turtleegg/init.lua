@@ -29,7 +29,7 @@ function ENT:PhysicsCollide(data)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:OnTakeDamage(dmginfo,data)
+function ENT:OnTakeDamage(dmginfo, data)
 	self:SpawnBloodParticles(dmginfo)
 	self:SpawnBloodDecals(dmginfo)
 	self:EmitSound("vj_base/impact/flesh_alien.wav", 80, math.random(80, 100))
@@ -65,8 +65,8 @@ function ENT:SpawnBloodParticles(dmginfo, hitgroup)
 	bloodParticle:SetPos(damagePos)
 	bloodParticle:Spawn()
 	bloodParticle:Activate()
-	bloodParticle:Fire("Start","",0)
-	bloodParticle:Fire("Kill","",0.1)
+	bloodParticle:Fire("Start", "", 0)
+	bloodParticle:Fire("Kill", "", 0.1)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:SpawnBloodDecals(dmginfo, hitgroup)
@@ -78,5 +78,5 @@ function ENT:SpawnBloodDecals(dmginfo, hitgroup)
 	local posEnd = posStart +force:GetNormal() *length
 	local tr = util.TraceLine({start = posStart, endpos = posEnd, filter = self})
 	if !tr.HitWorld then return end
-	util.Decal("VJ_Blood_Red",tr.HitPos +tr.HitNormal,tr.HitPos -tr.HitNormal)
+	util.Decal("VJ_Blood_Red", tr.HitPos +tr.HitNormal, tr.HitPos -tr.HitNormal)
 end

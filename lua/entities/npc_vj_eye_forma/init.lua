@@ -47,15 +47,15 @@ ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
 }
 
-ENT.SoundTbl_FootStep = {"vj_eye/forma/foot1.wav","vj_eye/forma/foot2.wav","vj_eye/forma/foot3.wav","vj_eye/forma/foot4.wav"}
+ENT.SoundTbl_FootStep = {"vj_eye/forma/foot1.wav", "vj_eye/forma/foot2.wav", "vj_eye/forma/foot3.wav", "vj_eye/forma/foot4.wav"}
 //ENT.SoundTbl_Breath = {"vj_eye/forma/breathe_loop1.wav"}
-ENT.SoundTbl_Idle = {"vj_eye/forma/idle1.wav","vj_eye/forma/idle2.wav","vj_eye/forma/idle3.wav","vj_eye/forma/breathe_loop1.wav"}
-ENT.SoundTbl_Alert = {"vj_eye/forma/alert1.wav","vj_eye/forma/alert2.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_eye/forma/claw_strike1.wav","vj_eye/forma/claw_strike2.wav","vj_eye/forma/claw_strike3.wav"}
+ENT.SoundTbl_Idle = {"vj_eye/forma/idle1.wav", "vj_eye/forma/idle2.wav", "vj_eye/forma/idle3.wav", "vj_eye/forma/breathe_loop1.wav"}
+ENT.SoundTbl_Alert = {"vj_eye/forma/alert1.wav", "vj_eye/forma/alert2.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_eye/forma/claw_strike1.wav", "vj_eye/forma/claw_strike2.wav", "vj_eye/forma/claw_strike3.wav"}
 ENT.SoundTbl_MeleeAttackMiss = "vj_eye/forma/claw_miss1.wav"
 ENT.SoundTbl_LeapAttackJump = "vj_eye/forma/leap1.wav"
-ENT.SoundTbl_LeapAttackDamage = {"vj_eye/forma/claw_strike1.wav","vj_eye/forma/claw_strike2.wav","vj_eye/forma/claw_strike3.wav"}
-ENT.SoundTbl_Pain = {"vj_eye/forma/pain1.wav","vj_eye/forma/pain2.wav"}
+ENT.SoundTbl_LeapAttackDamage = {"vj_eye/forma/claw_strike1.wav", "vj_eye/forma/claw_strike2.wav", "vj_eye/forma/claw_strike3.wav"}
+ENT.SoundTbl_Pain = {"vj_eye/forma/pain1.wav", "vj_eye/forma/pain2.wav"}
 ENT.SoundTbl_Death = "vj_eye/forma/die1.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
