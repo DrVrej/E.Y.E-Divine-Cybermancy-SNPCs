@@ -63,14 +63,16 @@ function ENT:OnAlert(ent)
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnMeleeAttack_BeforeChecks()
-	local curSeq = self:GetSequenceName(self:GetSequence())
-	if curSeq == "Melee" or curSeq == "Melee2" then -- Smashes
-		self.MeleeAttackDamage = 75
-		self.HasMeleeAttackKnockBack = false
-	else -- Slashes | "Melee3", "Melee4"
-		self.MeleeAttackDamage = 60
-		self.HasMeleeAttackKnockBack = true
+function ENT:OnMeleeAttackExecute(status, ent, isProp)
+	if status == "Init" then
+		local curSeq = self:GetSequenceName(self:GetSequence())
+		if curSeq == "Melee" or curSeq == "Melee2" then -- Smashes
+			self.MeleeAttackDamage = 75
+			self.HasMeleeAttackKnockBack = false
+		else -- Slashes | "Melee3", "Melee4"
+			self.MeleeAttackDamage = 60
+			self.HasMeleeAttackKnockBack = true
+		end
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
