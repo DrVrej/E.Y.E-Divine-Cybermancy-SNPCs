@@ -85,7 +85,7 @@ function ENT:OnFootstepSound(moveType, sdFile)
 	util.ScreenShake(self:GetPos(), 10, 100, 0.4, 4000)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:MeleeAttackKnockbackVelocity(hitEnt)
+function ENT:MeleeAttackKnockbackVelocity(ent)
 	return self:GetForward()*math.random(580, 620) + self:GetUp()*math.random(580, 610)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
