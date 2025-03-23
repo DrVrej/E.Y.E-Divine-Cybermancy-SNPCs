@@ -28,13 +28,13 @@ ENT.FootstepSoundTimerWalk = 0.5
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.FlinchHitGroupMap = {
-	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
-	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
-	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},
-	{HitGroup = {HITGROUP_LEFTARM}, Animation = {"vjges_gesture_flinch_leftArm"}},
-	{HitGroup = {HITGROUP_RIGHTARM}, Animation = {"vjges_gesture_flinch_rightArm"}},
-	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
-	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
+	{HitGroup = HITGROUP_HEAD, Animation = "vjges_gesture_flinch_head"},
+	{HitGroup = HITGROUP_CHEST, Animation = "vjges_gesture_flinch_chest"},
+	{HitGroup = HITGROUP_STOMACH, Animation = "vjges_gesture_flinch_stomach"},
+	{HitGroup = HITGROUP_LEFTARM, Animation = "vjges_gesture_flinch_leftArm"},
+	{HitGroup = HITGROUP_RIGHTARM, Animation = "vjges_gesture_flinch_rightArm"},
+	{HitGroup = HITGROUP_LEFTLEG, Animation = "vjges_gesture_flinch_leftleg"},
+	{HitGroup = HITGROUP_RIGHTLEG, Animation = "vjges_gesture_flinch_rightleg"}
 }
 
 ENT.SoundTbl_FootStep = {"vj_eye/carnophage/carnofoot1.mp3", "vj_eye/carnophage/carnofoot2.mp3"}
@@ -46,7 +46,7 @@ ENT.SoundTbl_Pain = {"vj_eye/carnophage/pain1.wav", "vj_eye/carnophage/pain2.wav
 ENT.SoundTbl_Death = {"vj_eye/carnophage/scream.wav", "vj_eye/carnophage/die2.wav"}
 
 local sdAlertRegular = {"vj_eye/carnophage/alert1.wav", "vj_eye/carnophage/alert3.wav"}
-local sdAlertAngry = {"vj_eye/carnophage/gurgle_loop1.wav"}
+local sdAlertAngry = "vj_eye/carnophage/gurgle_loop1.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetCollisionBounds(Vector(22, 22, 80), Vector(-22, -22, 0))

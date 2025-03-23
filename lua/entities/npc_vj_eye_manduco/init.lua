@@ -34,13 +34,13 @@ ENT.DisableFootStepSoundTimer = true
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.FlinchHitGroupMap = {
-	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_gesture_flinch_head"}},
-	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_gesture_flinch_chest"}},
-	{HitGroup = {HITGROUP_STOMACH}, Animation = {"vjges_gesture_flinch_stomach"}},
-	{HitGroup = {HITGROUP_LEFTARM}, Animation = {"vjges_gesture_flinch_leftArm"}},
-	{HitGroup = {HITGROUP_RIGHTARM}, Animation = {"vjges_gesture_flinch_righttArm"}}, -- Note: Manduco has a typo for this anim!
-	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {"vjges_gesture_flinch_leftleg"}},
-	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {"vjges_gesture_flinch_rightleg"}}
+	{HitGroup = HITGROUP_HEAD, Animation = "vjges_gesture_flinch_head"},
+	{HitGroup = HITGROUP_CHEST, Animation = "vjges_gesture_flinch_chest"},
+	{HitGroup = HITGROUP_STOMACH, Animation = "vjges_gesture_flinch_stomach"},
+	{HitGroup = HITGROUP_LEFTARM, Animation = "vjges_gesture_flinch_leftArm"},
+	{HitGroup = HITGROUP_RIGHTARM, Animation = "vjges_gesture_flinch_righttArm"}, -- Note: Manduco's anim has a typo!
+	{HitGroup = HITGROUP_LEFTLEG, Animation = "vjges_gesture_flinch_leftleg"},
+	{HitGroup = HITGROUP_RIGHTLEG, Animation = "vjges_gesture_flinch_rightleg"}
 }
 
 ENT.SoundTbl_FootStep = {"vj_eye/manduco/walk1.wav", "vj_eye/manduco/walk2.wav", "vj_eye/manduco/walk3.wav", "vj_eye/manduco/walk4.wav"}
