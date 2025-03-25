@@ -24,7 +24,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:PhysicsCollide(data)
 	if CurTime() > self.NextTouchSoundT then
-		self:EmitSound("physics/flesh/flesh_squishy_impact_hard"..math.random(1, 4)..".wav", 60)
+		self:EmitSound("physics/flesh/flesh_squishy_impact_hard" .. math.random(1, 4) .. ".wav", 60)
 		self.NextTouchSoundT = CurTime() + 1
 	end
 end
